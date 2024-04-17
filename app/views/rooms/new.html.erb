@@ -1,0 +1,35 @@
+<div class="main">
+	<div>
+		Chat
+	</div>
+	<div>
+		Game
+	</div>
+	<div>
+		<h1>Home page</h1>
+		<div><%= button_to "Log out", logout_path, method: :delete %></div>
+
+		<div>
+			<%= form_for :room, url: rooms_path do |f| %>
+				<div>
+					<input type="radio" id="model_1" name="model" value="StandardQuestion" checked />
+					<label for="model_1">model_1</label>
+					<br>
+					<input type="radio" id="model_2" name="model" value="CoralQuestion" />
+					<label for="model_2">model_2</label>
+				</div>
+				<%= f.submit 'New Room' %>
+			<% end %>
+			<hr>
+		</div>
+
+		<div>rooms:</div>
+			<% @rooms.each do |room| %>
+				<div>room: 
+				<%= link_to room.room_id, url_for(controller: 'rooms', action: 'show', id: room.room_id) %>
+				<%= button_to "delete", url_for(controller: 'rooms', action: 'destroy', id: room.room_id), method: :delete %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
