@@ -5,12 +5,19 @@ class RoomsController < ApplicationController
   def new
     @rooms = Room.all
 
-    # json_data = File.read('vendor/cohere_coral.json')
-    # data = JSON.parse(json_data)
+    json_data = File.read('vendor/cohere_standart.json')
+    data = JSON.parse(json_data)
 
-    # data.each do |q|
-    #   CoralQuestion.create(question: q['question'], options: q['options'], answer: q['answer'])
-    # end
+    data.each do |q|
+      StandardQuestion.create(question: q['question'], options: q['options'], answer: q['answer'])
+    end
+
+    json_data = File.read('vendor/cohere_coral.json')
+    data = JSON.parse(json_data)
+
+    data.each do |q|
+      CoralQuestion.create(question: q['question'], options: q['options'], answer: q['answer'])
+    end
   end
 
   def create
