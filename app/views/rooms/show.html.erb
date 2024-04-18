@@ -16,23 +16,30 @@
 
 
 
-	<div>
+	<div class="game">
+		<div class="map">
+		</div>
 
-		<h3><%= @question.question %></h3>
+		<div class="questions">
+			<h2 class="question"><%= @question.question %></h2>
 
-		<form action=<%= "#{@room.room_id}/questions" %> method="post">
-			<% @question.options.each_with_index do |option, index| %>
-					<div>
-						<input type="checkbox" id=<%= index %> name=<%= index %>>
-						<label for=<%= index %>><%= option %></label>
-					</div>
-			<% end %>
-			<button type="submit">Submit</button>
-		</form>
+			<form action=<%= "#{@room.room_id}/questions" %> method="post">
+				<ol class="list-1">
+					<% @question.options.each_with_index do |option, index| %>
+						<li>
+							<input type="checkbox" id=<%= index %> name=<%= index %>>
+							<label for=<%= index %>><%= option %></label>
+						</li>
+					<% end %>
+				</ol>
+				<button type="submit" class="button-1">Submit</button>
+			</form>
 
-		<div>текущий счет: <%= @room.count %> / <%= Object.const_get(@room.current_model).count %></div>
-		<div>результат: <%= @room.result %></div>
-		
+			<div class="count_result">
+				<div>текущий счет: <%= @room.count %> / <%= Object.const_get(@room.current_model).count %></div>
+				<div>результат: <%= @room.result %></div>
+			</div>
+		</div>
 	</div>
 
 
@@ -40,9 +47,9 @@
 	<div>
 		<h2>Room: <%= @room.room_id %></h2>
 		<hr>
-		<div><%= button_to "Log out", logout_path, method: :delete %></div>
+		<div><%= button_to "Log out", logout_path, method: :delete, class: 'button-1' %></div>
 		<hr>
-		<div><%= button_to "Home", root_path, method: :get %></div>
+		<div><%= button_to "Home", root_path, method: :get, class: 'button-1' %></div>
 	</div>
 
 
