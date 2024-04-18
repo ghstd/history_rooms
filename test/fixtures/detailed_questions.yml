@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  random_question: MyString
+  what_next_question: MyString
+
+two:
+  random_question: MyString
+  what_next_question: MyString

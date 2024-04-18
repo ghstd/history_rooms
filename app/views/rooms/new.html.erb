@@ -13,10 +13,19 @@
 			<%= form_for :room, url: rooms_path do |f| %>
 				<div>
 					<input type="radio" id="model_1" name="model" value="StandardQuestion" checked />
-					<label for="model_1">model_1</label>
+					<label for="model_1">StandardQuestion</label>
 					<br>
 					<input type="radio" id="model_2" name="model" value="CoralQuestion" />
-					<label for="model_2">model_2</label>
+					<label for="model_2">CoralQuestion</label>
+					<br>
+					<input type="radio" id="model_3" name="model" value="DetailedQuestion" />
+					<label for="model_3">DetailedQuestion</label>
+					<br>
+					<input type="radio" id="model_4" name="model" value="RandomQuestion" />
+					<label for="model_4">RandomQuestion</label>
+					<br>
+					<input type="radio" id="model_5" name="model" value="WhatNextQuestion" />
+					<label for="model_5">WhatNextQuestion</label>
 				</div>
 				<%= f.submit 'New Room' %>
 			<% end %>

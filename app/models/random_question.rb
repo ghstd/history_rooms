@@ -1,0 +1,2 @@
+class RandomQuestion < ApplicationRecord
+end
