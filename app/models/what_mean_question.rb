@@ -1,0 +1,2 @@
+class WhatMeanQuestion < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class SurvivalQuestion < ApplicationRecord
+end

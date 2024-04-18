@@ -1,0 +1,2 @@
+class WhenWhereQuestion < ApplicationRecord
+end

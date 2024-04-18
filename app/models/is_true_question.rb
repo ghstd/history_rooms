@@ -1,0 +1,2 @@
+class IsTrueQuestion < ApplicationRecord
+end

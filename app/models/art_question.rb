@@ -1,0 +1,2 @@
+class ArtQuestion < ApplicationRecord
+end

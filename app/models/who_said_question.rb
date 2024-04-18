@@ -1,0 +1,2 @@
+class WhoSaidQuestion < ApplicationRecord
+end

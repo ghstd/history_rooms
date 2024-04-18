@@ -1,0 +1,2 @@
+class RiversQuestion < ApplicationRecord
+end

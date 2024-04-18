@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_18_123628) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_18_193412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "art_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "coral_questions", force: :cascade do |t|
     t.string "question", null: false
@@ -23,6 +39,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_123628) do
   end
 
   create_table "detailed_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "is_true_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
@@ -47,6 +71,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_123628) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rivers_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "room_id", null: false
     t.integer "current_question", default: 1, null: false
@@ -64,6 +96,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_123628) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "survival_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
@@ -74,7 +114,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_123628) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  create_table "what_mean_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "what_next_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "when_where_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "who_said_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
