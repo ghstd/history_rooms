@@ -12,7 +12,12 @@
 
 
 body {
-	background-color: #656464;
+	background-color: #3d483a;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+	cursor: pointer;
 }
 
 .main {
@@ -49,7 +54,6 @@ a:hover {
 .list-1 {
 	margin-left: 0;
 	list-style: none;
-	counter-reset: li;
 }
 
 .list-1 li {
@@ -60,7 +64,21 @@ a:hover {
 	border-radius: 4px;
 	background: #284c07;
 	color: #fff;
-	font-size: 1.2rem;
+	font-size: 1.4rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem
+}
+
+.list-1 li input {
+	width: 1.5rem;
+	height: 1.5rem;
+	flex-shrink: 0;
+}
+
+.list-1 li label {
+	flex-grow: 1;
+	text-align: center;
 }
 
 .list-1 li:before {
@@ -73,8 +91,6 @@ a:hover {
 	color: #4b6adc;
 	background: #FEFEFE;
 	border-radius: 50%;
-	counter-increment: li;
-	content: counter(li);
 }
 
 .list-2 {
@@ -104,13 +120,14 @@ a:hover {
 }
 
 .question {
-	font-weight: bold;
-	// font-style: italic;
+	font-size: 1.6rem;
+	font-weight: 600;
 	padding: 1rem;
 	line-height: 2rem;
-	background: #4b6adc;
+	background: #2b51dc;
 	color: #fff;
 	margin-bottom: 1.5rem;
+	position: relative;
 }
 
 .count_result {
@@ -126,10 +143,11 @@ a:hover {
 .game {
 	display: flex;
 	flex-direction: column;
+	overflow-y: auto;
 }
 
 .map {
-	flex: 0 0 25%;
+	flex: 0 0 15%;
 	background-color: #343d33;
 }
 
@@ -137,4 +155,36 @@ a:hover {
 	flex-grow: 1;
 }
 
+.clipboard-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #27016d;
+	color: #fff;
+	font-size: 0.8rem;
+	line-height: 1rem;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
 .control-new {}
+
+.rooms form {
+	display: inline-block;
+}
+
+.login,
+.registration {
+	margin: 10vh auto 0;
+}
+
+.login form,
+.registration form {
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+.login h1,
+.registration h1 {
+	color: #85dcf9;
+}

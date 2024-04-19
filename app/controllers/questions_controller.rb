@@ -28,7 +28,12 @@ class QuestionsController < ApplicationController
       end
     end
 
-    redirect_to "/rooms/#{params[:room_id]}"
+    @question = Object.const_get(@room.current_model).find(@room.current_question)
+
+    respond_to do |format|
+      format.html { redirect_to "/rooms/#{params[:room_id]}", notice: "successfully" }
+      format.turbo_stream
+    end
   end
 
 end

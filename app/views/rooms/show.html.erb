@@ -5,6 +5,7 @@
 
 
 	<div>
+
 		<turbo-frame id="messages">
 			<% @room.messages.each do |message| %>
 				<%= render 'messages/message', {message: message} %>
@@ -14,32 +15,14 @@
 		<%= render "rooms/form" %>
 	</div>
 
-
-
 	<div class="game">
 		<div class="map">
 		</div>
 
-		<div class="questions">
-			<h2 class="question"><%= @question.question %></h2>
+		<turbo-frame id="questions">
+			<%= render 'rooms/questions', {question: @question, room: @room} %>
+		</turbo-frame>
 
-			<form action=<%= "#{@room.room_id}/questions" %> method="post">
-				<ol class="list-1">
-					<% @question.options.each_with_index do |option, index| %>
-						<li>
-							<input type="checkbox" id=<%= index %> name=<%= index %>>
-							<label for=<%= index %>><%= option %></label>
-						</li>
-					<% end %>
-				</ol>
-				<button type="submit" class="button-1">Submit</button>
-			</form>
-
-			<div class="count_result">
-				<div>текущий счет: <%= @room.count %> / <%= Object.const_get(@room.current_model).count %></div>
-				<div>результат: <%= @room.result %></div>
-			</div>
-		</div>
 	</div>
 
 
