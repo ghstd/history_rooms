@@ -61,6 +61,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'pry'
+  gem 'letter_opener'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -68,3 +72,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9"
+
+gem "omniauth-github", "~> 2.0"
+gem "omniauth-facebook", "~> 9.0"
+gem "omniauth-google-oauth2", "~> 1.1"
+gem "omniauth-rails_csrf_protection", "~> 1.0"

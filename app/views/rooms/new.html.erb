@@ -1,84 +1,83 @@
 <div class="main">
-	<div>
-		Chat
-	</div>
-	<div>
-		Game
-	</div>
-	<div class="control-new">
-		<h1>Home page</h1>
-		<div><%= button_to "Log out", logout_path, method: :delete, class: 'button-1' %></div>
+  <div>
+    Chat
+  </div>
+  <div>
+    Game
+  </div>
+  <div class="control-new">
+    <h1>Home page</h1>
 
-		<div>
-			<%= form_for :room, url: rooms_path do |f| %>
-				<ul class="list-2">
-					<li>
-						<input type="radio" id="model_1" name="model" value="StandardQuestion" checked />
-						<label for="model_1">StandardQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_2" name="model" value="CoralQuestion" />
-						<label for="model_2">CoralQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_3" name="model" value="DetailedQuestion" />
-						<label for="model_3">DetailedQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_4" name="model" value="RandomQuestion" />
-						<label for="model_4">RandomQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_5" name="model" value="WhatNextQuestion" />
-						<label for="model_5">WhatNextQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_6" name="model" value="ArtQuestion" />
-						<label for="model_6">ArtQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_7" name="model" value="CitiesQuestion" />
-						<label for="model_7">CitiesQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_8" name="model" value="IsTrueQuestion" />
-						<label for="model_8">IsTrueQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_9" name="model" value="RiversQuestion" />
-						<label for="model_9">RiversQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_10" name="model" value="SurvivalQuestion" />
-						<label for="model_10">SurvivalQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_11" name="model" value="WhatMeanQuestion" />
-						<label for="model_11">WhatMeanQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_12" name="model" value="WhenWhereQuestion" />
-						<label for="model_12">WhenWhereQuestion</label>
-					</li>
-					<li>
-						<input type="radio" id="model_13" name="model" value="WhoSaidQuestion" />
-						<label for="model_13">WhoSaidQuestion</label>
-					</li>
-				</ul>
-				<%= f.submit 'New Room', class: 'button-1' %>
-			<% end %>
-			<hr>
-		</div>
+    <div>
+      <%= form_for :room, url: rooms_path do |f| %>
+        <ul class="list-2">
+          <li>
+            <input type="radio" id="model_1" name="model" value="StandardQuestion" checked />
+            <label for="model_1">StandardQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_2" name="model" value="CoralQuestion" />
+            <label for="model_2">CoralQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_3" name="model" value="DetailedQuestion" />
+            <label for="model_3">DetailedQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_4" name="model" value="RandomQuestion" />
+            <label for="model_4">RandomQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_5" name="model" value="WhatNextQuestion" />
+            <label for="model_5">WhatNextQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_6" name="model" value="ArtQuestion" />
+            <label for="model_6">ArtQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_7" name="model" value="CitiesQuestion" />
+            <label for="model_7">CitiesQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_8" name="model" value="IsTrueQuestion" />
+            <label for="model_8">IsTrueQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_9" name="model" value="RiversQuestion" />
+            <label for="model_9">RiversQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_10" name="model" value="SurvivalQuestion" />
+            <label for="model_10">SurvivalQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_11" name="model" value="WhatMeanQuestion" />
+            <label for="model_11">WhatMeanQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_12" name="model" value="WhenWhereQuestion" />
+            <label for="model_12">WhenWhereQuestion</label>
+          </li>
+          <li>
+            <input type="radio" id="model_13" name="model" value="WhoSaidQuestion" />
+            <label for="model_13">WhoSaidQuestion</label>
+          </li>
+        </ul>
+        <%= f.submit 'New Room', class: 'button-1' %>
+      <% end %>
+      <hr>
+    </div>
 
-		<h4>rooms:</h4>
-			<div class="rooms">
-				<% @rooms.each do |room| %>
-					<div>room: 
-					<%= link_to room.room_id, url_for(controller: 'rooms', action: 'show', id: room.room_id) %>
-					<%= button_to "delete", url_for(controller: 'rooms', action: 'destroy', id: room.room_id), method: :delete, class: 'button-2' %>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+    <h4>rooms:</h4>
+    <div class="rooms">
+      <% @rooms.each do |room| %>
+        <div>room: 
+          <%= link_to room.room_id, url_for(controller: 'rooms', action: 'show', id: room.room_id) %>
+          <%= button_to "delete", url_for(controller: 'rooms', action: 'destroy', id: room.room_id), method: :delete, class: 'button-2' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>

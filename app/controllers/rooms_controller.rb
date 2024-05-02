@@ -2,6 +2,8 @@ require 'json'
 
 class RoomsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @rooms = Room.all
   end
