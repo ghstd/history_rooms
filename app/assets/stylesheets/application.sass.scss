@@ -16,6 +16,19 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+// =========================
+
+.admin_notes {
+	display: flex;
+	justify-content: space-between;
+}
+
+.admin_notes>div {
+	width: 30%;
+}
+
+// =========================
+
 label {
 	cursor: pointer;
 }

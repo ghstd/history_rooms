@@ -1,0 +1,51 @@
+<h1>Admin#index</h1>
+<p>Find me in app/views/admin/index.html.erb</p>
+
+<%= form_with(model: @user, url: admin_index_path, method: :post) do |f| %>
+  <%= f.email_field :email, placeholder: 'Email' %>
+  <%= f.select :role, User.roles.keys.map { |w| [w.humanize, w] }, include_blank: 'Select a role' %>
+  <br/>
+  <%= f.password_field :password, placeholder: 'Password' %>
+  <%= f.password_field :password_confirmation, placeholder: 'Password confirmation' %>
+  <br/>
+  <%= f.submit %>
+<% end %>
+
+<% @users.each do |user| %>
+  <%= form_for(user, url: admin_path(user), remote: true, method: :patch) do |f| %>
+    <p>
+      <%= f.text_field :email %> - <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> - <%= f.submit 'Update' %>
+    </p>
+  <% end %>
+<% end %>
+
+<hr/>
+
+<div class="admin_notes">
+  <div>
+    <h1>all_notes</h1>
+    <hr/>
+    <% @notes.each do |note| %>
+      <h2>id: <%= note.id %></h2>
+      <div>title: <%= note.title %></div>
+      <div>body: <%= note.body %></div>
+      <div>created_at: <%= note.created_at.strftime("%d.%m.%Y") %></div>
+      <hr/>
+    <% end %>
+    <h3>count: <%= @notes.count %></h3>
+  </div>
+  <% @users.each do |user| %>
+    <div>
+      <h1><%= user.email %></h1>
+      <hr/>
+      <% user.notes.each do |note| %>
+        <h2>id: <%= note.id %></h2>
+        <div>title: <%= note.title %></div>
+        <div>body: <%= note.body %></div>
+        <div>created_at: <%= note.created_at.strftime("%d.%m.%Y") %></div>
+        <hr/>
+      <% end %>
+      <h3>count: <%= user.notes.count %></h3>
+    </div>
+  <% end %>
+</div>

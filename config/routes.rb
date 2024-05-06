@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  root "rooms#new"
+  root 'pages#home'
 
   devise_for :users,
   omniauth_providers: [:facebook, :google_oauth2, :github],
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  resources :admin, only: [:index, :create, :update]
+  resources :notes
+
+
+
 
   resources :rooms, only: [:new, :create, :show, :destroy] do
     resources :messages, only: [:create]
