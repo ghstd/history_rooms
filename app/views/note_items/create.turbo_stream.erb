@@ -1,0 +1,4 @@
+<%= turbo_stream.append 'note_items' do %>
+  <%= render partial: "note_items/note_item", locals: { note: @note, note_item: @note_item } %>
+<% end %>
+<%= turbo_stream.update dom_id(@note, 'new_note_item'), '' %>

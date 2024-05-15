@@ -1,12 +1,17 @@
-<div id="<%= dom_id note %>">
+<div>
   <p>
     <strong>Title:</strong>
     <%= note.title %>
   </p>
 
-  <p>
-    <strong>Body:</strong>
-    <%= note.body %>
-  </p>
+  <h3>Items:</h3>
 
+  <%= turbo_frame_tag dom_id(note) do %>
+    <% note.note_items.each do |note_item| %>
+      <%= render note_item, {note: note} %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "New note_item", new_note_note_item_path(note), data: {turbo_frame: dom_id(note, 'new_note_item')} %>
+  <%= turbo_frame_tag dom_id(note, 'new_note_item') %>
 </div>

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(note_item) do %>
+  <div id="<%= dom_id note_item %>" class="note_item">
+    <p><%= note_item.body %></p>
+    <%= link_to "Edit", edit_note_note_item_path(note, note_item) %>
+    <%= button_to "Destroy", note_note_item_path(note, note_item), method: :delete %>
+  </div>
+<% end %>

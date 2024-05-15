@@ -27,6 +27,24 @@ body {
 	width: 30%;
 }
 
+.note_item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.new_note_item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.edit_note_item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
 // =========================
 
 label {

@@ -1,16 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_stream_from 'notes' %>
 
 <h1>Notes</h1>
 
 <%= link_to "Home", root_path %>
+<%= link_to "New note", new_note_path %>
 
 <div id="notes">
   <% @notes.each do |note| %>
     <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
+    <%= link_to "Show this note", note %>
+    <hr/>
   <% end %>
 </div>
-
-<%= link_to "New note", new_note_path %>

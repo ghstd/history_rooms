@@ -28,7 +28,6 @@
     <% @notes.each do |note| %>
       <h2>id: <%= note.id %></h2>
       <div>title: <%= note.title %></div>
-      <div>body: <%= note.body %></div>
       <div>created_at: <%= note.created_at.strftime("%d.%m.%Y") %></div>
       <hr/>
     <% end %>
@@ -41,7 +40,6 @@
       <% user.notes.each do |note| %>
         <h2>id: <%= note.id %></h2>
         <div>title: <%= note.title %></div>
-        <div>body: <%= note.body %></div>
         <div>created_at: <%= note.created_at.strftime("%d.%m.%Y") %></div>
         <hr/>
       <% end %>

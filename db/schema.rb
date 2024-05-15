@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_04_194545) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_08_161542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,9 +63,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_194545) do
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
+  create_table "note_items", force: :cascade do |t|
+    t.text "body"
+    t.bigint "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_note_items_on_note_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string "title"
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -169,4 +176,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_194545) do
   end
 
   add_foreign_key "messages", "rooms"
+  add_foreign_key "note_items", "notes"
 end

@@ -1,0 +1,8 @@
+<h1>Editing note_item</h1>
+
+<%= turbo_frame_tag dom_id(@note_item) do %>
+  <div class="edit_note_item">
+    <%= render "form", note: @note, note_item: @note_item %>
+    <%= link_to "x", note_path(@note) %>
+  </div>
+<% end %>
