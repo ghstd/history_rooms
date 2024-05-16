@@ -27,6 +27,15 @@ body {
 	width: 30%;
 }
 
+.admin_quiz_games {
+	display: flex;
+	justify-content: space-between;
+}
+
+.admin_quiz_games>div {
+	width: 30%;
+}
+
 .note_item {
 	display: flex;
 	align-items: center;

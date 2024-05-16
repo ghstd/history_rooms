@@ -93,6 +93,8 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   # ==================================================================
+  # config.web_console.permissions = '172.16.0.0/12'
+  config.web_console.permissions = '0.0.0.0/0'
   config.hosts << "bass-loyal-closely.ngrok-free.app"
   # ==================================================================
 end

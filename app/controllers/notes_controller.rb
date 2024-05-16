@@ -5,12 +5,18 @@ class NotesController < ApplicationController
   def index
     if params[:invite].present?
       encrypted_url = params[:invite]
-      user_id, note_id = Note.decrypt_url(encrypted_url)
-      note = Note.find(note_id)
+      user_id, note_id = ApplicationRecord.decrypt_url(encrypted_url)
+      note = Note.find_by(id: note_id)
+
+      if note.nil?
+        redirect_to root_path
+        return
+      end
+
       if !current_user.notes.include?(note)
         current_user.notes << note
       end
-      @notes = current_user.notes
+      redirect_to note_url(note)
     else
       @notes = current_user.notes
     end
@@ -55,7 +61,11 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-    @note.destroy!
+    current_user.notes.destroy(@note)
+
+    if @note.users.count == 0
+      @note.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to notes_url, notice: "note was successfully destroyed." }
@@ -65,7 +75,10 @@ class NotesController < ApplicationController
   private
 
     def set_note
-      @note = current_user.notes.find(params[:id])
+      @note = current_user.notes.find_by(id: params[:id])
+      if @note.nil?
+        redirect_to root_path
+      end
     end
 
     def note_params

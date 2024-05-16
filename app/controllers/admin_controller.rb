@@ -6,6 +6,7 @@ class AdminController < ApplicationController
     @user = User.new
     @users = User.all
     @notes = Note.all
+    @quiz_games = QuizGame.all
   end
 
   def create

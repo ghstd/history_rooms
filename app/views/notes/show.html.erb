@@ -1,5 +1,9 @@
 <%= turbo_stream_from 'notes' %>
 
+<div>
+  users: <%= @note.users.map { |user| user.email }.join(", ") %>
+</div>
+
 <%= render @note %>
 
 <div>
@@ -9,4 +13,4 @@
   <%= button_to "Destroy this note", @note, method: :delete %>
 </div>
 
-<div>invite url: <%= "https://#{request.host_with_port}#{notes_path}?invite=#{Note.create_encrypted_url(current_user.id, @note.id)}" %></div>
+<div>invite url: <%= "https://#{request.host_with_port}#{notes_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @note.id)}" %></div>

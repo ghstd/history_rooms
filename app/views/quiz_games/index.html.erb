@@ -1,0 +1,12 @@
+<h1>Quiz_games</h1>
+
+<%= link_to "Home", root_path %>
+<%= link_to "New quiz_game", new_quiz_game_path %>
+
+<div id="quiz_games">
+  <% @quiz_games.each do |quiz_game| %>
+    <%= render quiz_game %>
+    <%= link_to "Show this quiz_game", quiz_game %>
+    <hr/>
+  <% end %>
+</div>

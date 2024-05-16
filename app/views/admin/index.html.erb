@@ -19,7 +19,13 @@
   <% end %>
 <% end %>
 
+<br/>
 <hr/>
+<hr/>
+<hr/>
+<hr/>
+<br/>
+
 
 <div class="admin_notes">
   <div>
@@ -44,6 +50,40 @@
         <hr/>
       <% end %>
       <h3>count: <%= user.notes.count %></h3>
+    </div>
+  <% end %>
+</div>
+
+<br/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<br/>
+
+<div class="admin_quiz_games">
+  <div>
+    <h1>all_quiz_games</h1>
+    <hr/>
+    <% @quiz_games.each do |quiz_game| %>
+      <h2>id: <%= quiz_game.id %></h2>
+      <div>title: <%= quiz_game.name %></div>
+      <div>created_at: <%= quiz_game.created_at.strftime("%d.%m.%Y") %></div>
+      <hr/>
+    <% end %>
+    <h3>count: <%= @quiz_games.count %></h3>
+  </div>
+  <% @users.each do |user| %>
+    <div>
+      <h1><%= user.email %></h1>
+      <hr/>
+      <% user.quiz_games.each do |quiz_game| %>
+        <h2>id: <%= quiz_game.id %></h2>
+        <div>title: <%= quiz_game.name %></div>
+        <div>created_at: <%= quiz_game.created_at.strftime("%d.%m.%Y") %></div>
+        <hr/>
+      <% end %>
+      <h3>count: <%= user.quiz_games.count %></h3>
     </div>
   <% end %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_08_161542) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_153907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_161542) do
     t.bigint "note_id", null: false
     t.index ["note_id"], name: "index_notes_users_on_note_id"
     t.index ["user_id"], name: "index_notes_users_on_user_id"
+  end
+
+  create_table "quiz_game_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_game_id"], name: "index_quiz_game_users_on_quiz_game_id"
+    t.index ["user_id"], name: "index_quiz_game_users_on_user_id"
+  end
+
+  create_table "quiz_games", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "random_questions", force: :cascade do |t|
@@ -177,4 +192,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_161542) do
 
   add_foreign_key "messages", "rooms"
   add_foreign_key "note_items", "notes"
+  add_foreign_key "quiz_game_users", "quiz_games"
+  add_foreign_key "quiz_game_users", "users"
 end

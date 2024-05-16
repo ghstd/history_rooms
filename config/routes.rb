@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :admin, only: [:index, :create, :update]
+
   resources :notes do
     resources :note_items, only: [:new, :create, :edit, :update, :destroy]
   end
 
 
+  resources :quiz_games
 
 
   resources :rooms, only: [:new, :create, :show, :destroy] do
