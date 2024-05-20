@@ -3,8 +3,8 @@ class ApplicationRecord < ActiveRecord::Base
 
 
 
-  def self.create_encrypted_url(user_id, note_id)
-    data = "#{user_id}::#{note_id}"
+  def self.create_encrypted_url(user_id, resource_id)
+    data = "#{user_id}::#{resource_id}"
     lenght = ActiveSupport::MessageEncryptor.key_len
     salt  = SecureRandom.hex lenght
     secret = Rails.application.secret_key_base

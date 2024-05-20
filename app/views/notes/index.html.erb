@@ -1,4 +1,8 @@
-<%= turbo_stream_from 'notes' %>
+<% @notes.each do |note| %>
+  <% if note.users.count > 1 %>
+    <%= turbo_stream_from dom_id(note) %>
+  <% end %>
+<% end %>
 
 <h1>Notes</h1>
 

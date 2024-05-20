@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   def index
     if params[:invite].present?
       encrypted_url = params[:invite]
-      user_id, note_id = ApplicationRecord.decrypt_url(encrypted_url)
+      _, note_id = ApplicationRecord.decrypt_url(encrypted_url) # user_id, note_id
       note = Note.find_by(id: note_id)
 
       if note.nil?

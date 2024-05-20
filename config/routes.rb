@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :quiz_games
+  resources :quiz_games, only: [:index, :show, :create, :edit, :update, :destroy]
 
 
   resources :rooms, only: [:new, :create, :show, :destroy] do

@@ -1,10 +1,16 @@
+<%= turbo_stream_from @quiz_game %>
+
 <h1>Editing quiz_game</h1>
 
-<%= render "form", quiz_game: @quiz_game %>
-
-<br>
-
 <div>
-  <%= link_to "Show this quiz_game", @quiz_game %> |
-  <%= link_to "Back to quiz_games", quiz_games_path %>
+  <%= link_to "Back to all quiz_games", quiz_games_path %>
+  <%= button_to "Destroy this quiz_game", @quiz_game, method: :delete %>
 </div>
+
+<div data-controller="quiz_game">
+  <%= turbo_frame_tag dom_id(@quiz_game) do %>
+    <%= render "form", { url: quiz_game_path(@quiz_game), config_params: config_params, client_id: 'no_client' }.as_json %>
+  <% end %>
+</div>
+
+<div>invite url: <%= "https://#{request.host_with_port}#{quiz_games_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @quiz_game.id)}" %></div>

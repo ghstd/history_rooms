@@ -1,5 +1,3 @@
-<%= turbo_stream_from 'quiz_games' %>
-
 <div>
   users: <%= @quiz_game.users.map { |user| user.email }.join(", ") %>
 </div>
@@ -7,9 +5,7 @@
 <%= render @quiz_game %>
 
 <div>
-  <%= link_to "Edit this quiz_game", edit_quiz_game_path(@quiz_game) %> |
   <%= link_to "Back to quiz_games", quiz_games_path %>
-
   <%= button_to "Destroy this quiz_game", @quiz_game, method: :delete %>
 </div>
 

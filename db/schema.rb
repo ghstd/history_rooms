@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_16_153907) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_18_142604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_16_153907) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "game_status", default: "configuring"
+    t.string "questions_source"
   end
 
   create_table "random_questions", force: :cascade do |t|

@@ -1,4 +1,4 @@
-<%= turbo_stream_from 'notes' %>
+<%= turbo_stream_from dom_id(@note) %>
 
 <div>
   users: <%= @note.users.map { |user| user.email }.join(", ") %>
