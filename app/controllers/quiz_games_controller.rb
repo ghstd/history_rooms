@@ -1,11 +1,17 @@
+require 'net/http'
+
 class QuizGamesController < ApplicationController
 
   INIT_PARAMS = {
       'name' => 'New Game',
-      'questions_source' => 'first'
+      'questions_source' => 'Gpt4AiQuestions::MythicalLocationsQuestion'
     }
 
-  REDIS_EXPIRING_TIMER = 300
+  REDIS_EXPIRING_TIMER = 120
+
+  MODEL_NAMES = [
+    'Gpt4AiQuestions::MythicalLocationsQuestion'
+  ]
 
   before_action :set_quiz_game, only: [ :show, :edit, :update, :destroy ]
 
@@ -36,6 +42,91 @@ class QuizGamesController < ApplicationController
   end
 
   def show
+    p '====================='
+    p params
+    p '====================='
+
+    if params[:player_action] == 'option_сlicked'
+      player = @quiz_game.quiz_players.find_by(player_id: current_user.id)
+
+      Turbo::StreamsChannel.broadcast_append_to(
+        "quiz_game_show_#{@quiz_game.id}",
+        target: "main_form_option_#{params[:main_form][:player_answer]}",
+        partial: "quiz_games/game/player_choice",
+        locals: { player_color: player.player_color }
+      )
+      head :ok
+      return
+    end
+
+    if params[:player_action] == 'form_submit'
+      Turbo::StreamsChannel.broadcast_action_to(
+        "quiz_game_show_#{@quiz_game.id}",
+        action: 'form_submit'
+      )
+      head :ok
+      return
+
+    end
+
+    questions_model = Object.const_get(@quiz_game.questions_source)
+    @questions_quantity = questions_model.count
+    questions_counter = @quiz_game.questions_counter
+    @current_question = questions_model.find_by(id: questions_counter)
+    main_form_params = params[:main_form]
+
+    if main_form_params.present?
+
+      if main_form_params[:request_type] == "next"
+
+        if questions_counter >= @questions_quantity
+          render :show, locals: {response_type: "end"}
+          return
+        end
+
+        if @quiz_game.quiz_players.count > 1
+          redis = Redis.new
+          requests_counter = redis.incr('requests_counter')
+          if requests_counter >= @quiz_game.quiz_players.count
+            redis.set('requests_counter', 0)
+            render :show, locals: {response_type: "next"}
+            return
+          end
+        end
+
+        @quiz_game.update!(questions_counter: questions_counter + 1)
+        @current_question = questions_model.find_by(id: @quiz_game.questions_counter)
+
+        render :show, locals: {response_type: "next"}
+
+      elsif main_form_params[:request_type] == "restart"
+
+        @quiz_game.update!(questions_counter: 1)
+        @current_question = questions_model.find_by(id: @quiz_game.questions_counter)
+        @quiz_game.quiz_players.each do |quiz_player|
+          quiz_player.player_answers = []
+          quiz_player.save!
+        end
+
+        render :show, locals: {response_type: "answer"}
+
+      else
+        guiz_player = QuizPlayer.find_by(player_id: current_user.id)
+        player_answer = ((main_form_params[:player_answer] == @current_question.correct_answer) ? 1 : 0)
+        guiz_player.player_answers << player_answer
+        guiz_player.save!
+
+        render :show, locals: {response_type: "answer"}
+      end
+
+    else
+      guiz_player = QuizPlayer.find_by(player_id: current_user.id)
+      if !@quiz_game.quiz_players.include?(guiz_player)
+        @quiz_game.quiz_players.create(player_id: current_user.id, player_color: set_player_color(current_user.id))
+      end
+
+      render :show, locals: {response_type: "next"}
+    end
   end
 
   def create
@@ -59,13 +150,13 @@ class QuizGamesController < ApplicationController
     redis = Redis.new
 
     if params[:quiz_game].present?
-      redis.setex("quiz_game_#{@quiz_game.id}", REDIS_EXPIRING_TIMER, params[:quiz_game].to_json)
+      redis.setex("quiz_game_edit_#{@quiz_game.id}", REDIS_EXPIRING_TIMER, params[:quiz_game].to_json)
       @config_params = params[:quiz_game]
     else
-      if redis_data = redis.get("quiz_game_#{@quiz_game.id}")
+      if redis_data = redis.get("quiz_game_edit_#{@quiz_game.id}")
         @config_params = JSON.parse(redis_data)
       else
-        redis.setex("quiz_game_#{@quiz_game.id}", REDIS_EXPIRING_TIMER, INIT_PARAMS.to_json)
+        redis.setex("quiz_game_edit_#{@quiz_game.id}", REDIS_EXPIRING_TIMER, INIT_PARAMS.to_json)
         @config_params = INIT_PARAMS
       end
     end
@@ -74,15 +165,20 @@ class QuizGamesController < ApplicationController
       client_id = params[:client_id]
 
       Turbo::StreamsChannel.broadcast_update_later_to(
-        @quiz_game,
+        "quiz_game_edit_#{@quiz_game.id}",
         target: "quiz_game_#{@quiz_game.id}",
         partial: "quiz_games/form",
-        locals: { url: quiz_game_path(@quiz_game), config_params: @config_params, client_id: client_id }.as_json
+        locals: {
+          url: quiz_game_path(@quiz_game),
+          config_params: @config_params,
+          client_id: client_id,
+          model_names: MODEL_NAMES
+        }.as_json
       )
 
       head :ok
     else
-      render :edit, locals: {config_params: @config_params}
+      render :edit, locals: {config_params: @config_params, model_names: MODEL_NAMES}
     end
   end
 
@@ -97,8 +193,9 @@ class QuizGamesController < ApplicationController
     redis.del("quiz_game_#{@quiz_game.id}")
 
     if @quiz_game.update(quiz_game_params.merge(game_status: 'started'))
+
       Turbo::StreamsChannel.broadcast_update_later_to(
-        @quiz_game,
+        "quiz_game_edit_#{@quiz_game.id}",
         target: "quiz_game_#{@quiz_game.id}",
         html: "<meta url='#{quiz_game_path(@quiz_game)}'/>"
       )
@@ -132,4 +229,10 @@ class QuizGamesController < ApplicationController
     def quiz_game_params
       params.require(:quiz_game).permit(:name, :questions_source)
     end
+
+    def set_player_color(player_id)
+      hue = (((player_id - 1) * 137.508) % 360)
+      "hsl(#{hue}, 100%, 50%)"
+    end
+
 end

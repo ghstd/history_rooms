@@ -1,2 +1,0 @@
-class CoralQuestion < ApplicationRecord
-end

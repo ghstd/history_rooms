@@ -1,0 +1,40 @@
+<%= form_with scope: :main_form,
+							url: quiz_game_path(quiz_game),
+							method: :get,
+							html: { class: "quiz_game_main_form" }	do |form| %>
+
+  <div>
+    <%= form.text_field :request_type, type: "hidden", value: response_type == "answer" ? "next" : "answer" %>
+
+    <div><%= current_question["question"] %></div>
+
+    <% current_question["options"].each_with_index do |option, index| %>
+      <div>
+        <%= form.label index, option %>
+        <%= form.radio_button :player_answer, option, checked: false, id: "main_form_#{index}", style: "display: none" %>
+
+
+        <%= turbo_frame_tag "main_form_option_#{option}" do %><% end %>
+
+
+      </div>
+    <% end %>
+
+  </div>
+
+  <div>
+    <% if response_type == "answer" %>
+      <%= form.submit "Next question" %>
+    <% else %>
+      <%= form.submit "Send answer" %>
+    <% end %>
+  </div>
+
+  <hr/>
+  <div>
+    <% if response_type == "answer" %>
+      <%= current_question[:correct_answer] %>
+    <% end %>
+  </div>
+
+<% end %>

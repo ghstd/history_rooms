@@ -1,2 +1,0 @@
-class WhatMeanQuestion < ApplicationRecord
-end

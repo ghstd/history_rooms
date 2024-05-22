@@ -1,2 +1,0 @@
-class RandomQuestion < ApplicationRecord
-end

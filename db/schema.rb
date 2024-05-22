@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_18_142604) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_22_152441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_142604) do
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
+  create_table "mythical_locations_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "note_items", force: :cascade do |t|
     t.text "body"
     t.bigint "note_id"
@@ -99,6 +107,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_142604) do
     t.datetime "updated_at", null: false
     t.string "game_status", default: "configuring"
     t.string "questions_source"
+    t.integer "questions_counter", default: 1
+  end
+
+  create_table "quiz_players", force: :cascade do |t|
+    t.integer "player_id"
+    t.text "player_answers", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "quiz_game_id"
+    t.string "player_color"
+    t.index ["player_id"], name: "index_quiz_players_on_player_id"
+    t.index ["quiz_game_id"], name: "index_quiz_players_on_quiz_game_id"
   end
 
   create_table "random_questions", force: :cascade do |t|
@@ -196,4 +216,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_142604) do
   add_foreign_key "note_items", "notes"
   add_foreign_key "quiz_game_users", "quiz_games"
   add_foreign_key "quiz_game_users", "users"
+  add_foreign_key "quiz_players", "quiz_games"
 end

@@ -1,2 +1,0 @@
-class WhenWhereQuestion < ApplicationRecord
-end

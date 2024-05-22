@@ -10,9 +10,9 @@
   </div>
 
   <div>
-    <% ["first", "second", "third"].each do |type| %>
-      <%= form.radio_button :questions_source, type, checked: local_assigns["config_params"]["questions_source"] == type || false %>
-      <%= form.label "questions_source#{type}", type %>
+    <% local_assigns["model_names"].each do |source_name| %>
+      <%= form.radio_button :questions_source, source_name, checked: local_assigns["config_params"]["questions_source"] == source_name || false %>
+      <%= form.label "questions_source#{source_name}", source_name %>
       <br/>
     <% end %>
 
@@ -23,6 +23,3 @@
   </div>
 
 <% end %>
-<hr/>
-<div>local_assigns: <%= local_assigns %></div>
-<hr/>

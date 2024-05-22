@@ -1,0 +1,9 @@
+<%= form_with scope: :main_form,
+							url: quiz_game_path(quiz_game),
+							method: :get do |form| %>
+
+  <%= form.text_field :request_type, type: "hidden", value: "restart" %>
+  <div>
+    <%= form.submit "Play again" %>
+  </div>
+<% end %>

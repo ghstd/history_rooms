@@ -1,2 +1,0 @@
-class IsTrueQuestion < ApplicationRecord
-end

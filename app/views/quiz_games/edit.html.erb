@@ -1,4 +1,4 @@
-<%= turbo_stream_from @quiz_game %>
+<%= turbo_stream_from "quiz_game_edit_#{@quiz_game.id}" %>
 
 <h1>Editing quiz_game</h1>
 
@@ -7,9 +7,14 @@
   <%= button_to "Destroy this quiz_game", @quiz_game, method: :delete %>
 </div>
 
-<div data-controller="quiz_game">
+<div data-controller="quiz_game_edit">
   <%= turbo_frame_tag dom_id(@quiz_game) do %>
-    <%= render "form", { url: quiz_game_path(@quiz_game), config_params: config_params, client_id: 'no_client' }.as_json %>
+    <%= render "form", { 
+			url: quiz_game_path(@quiz_game), 
+			config_params: config_params, 
+			client_id: 'no_client',
+			model_names: model_names
+			}.as_json %>
   <% end %>
 </div>
 

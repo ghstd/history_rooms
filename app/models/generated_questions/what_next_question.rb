@@ -1,2 +1,0 @@
-class WhatNextQuestion < ApplicationRecord
-end

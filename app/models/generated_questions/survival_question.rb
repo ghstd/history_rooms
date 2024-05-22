@@ -1,2 +1,0 @@
-class SurvivalQuestion < ApplicationRecord
-end

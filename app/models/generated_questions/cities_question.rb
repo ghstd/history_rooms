@@ -1,2 +1,0 @@
-class CitiesQuestion < ApplicationRecord
-end

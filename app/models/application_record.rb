@@ -26,12 +26,26 @@ class ApplicationRecord < ActiveRecord::Base
 
   # ======================================================
 
-  def self.json_to_db(model, path)
-    json_data = File.read(path)
-    data = JSON.parse(json_data)
+  # def self.json_to_db(model, path)
+  #   json_data = File.read(path)
+  #   data = JSON.parse(json_data)
 
-    data.each do |q|
-      Object.const_get(model).create(question: q['question'], options: q['options'], answer: q['answer'])
+  #   data.each do |q|
+  #     Object.const_get(model).create(question: q['question'], options: q['options'], answer: q['answer'])
+  #   end
+  # end
+
+  def self.save_questions_json_to_db
+    file_path = Rails.root.join('lib', 'quiz_game_data', 'gpt4_ai_questions', 'mythical_locations.json')
+    file_content = File.read(file_path)
+    questions = JSON.parse(file_content)
+
+    questions.each do |question_data|
+      Gpt4AiQuestions::MythicalLocationsQuestion.create!(
+      question: question_data['question'],
+      options: question_data['options'],
+      correct_answer: question_data['correct_answer']
+    )
     end
   end
 
