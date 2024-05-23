@@ -1,7 +1,0 @@
-<turbo-frame id="chat_form">
-	<%= form_for(:messages, url: "/rooms/#{@room.room_id}/messages") do |f| %>
-		<%= f.text_field :body, { autofocus: true } %>
-		<br>
-		<%= f.submit 'Send', class: 'button-1' %>
-	<% end %>
-</turbo-frame>

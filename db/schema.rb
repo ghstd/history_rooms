@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_22_152441) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,15 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_152441) do
     t.jsonb "answer", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "body", null: false
-    t.string "author", null: false
-    t.bigint "room_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "mythical_locations_questions", force: :cascade do |t|
@@ -137,15 +128,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_152441) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", force: :cascade do |t|
-    t.string "room_id", null: false
-    t.integer "current_question", default: 1, null: false
-    t.integer "count", default: 0, null: false
-    t.integer "result", default: 0, null: false
-    t.string "current_model"
-    t.index ["room_id"], name: "index_rooms_on_room_id", unique: true
-  end
-
   create_table "standard_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
@@ -212,7 +194,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_152441) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "messages", "rooms"
   add_foreign_key "note_items", "notes"
   add_foreign_key "quiz_game_users", "quiz_games"
   add_foreign_key "quiz_game_users", "users"

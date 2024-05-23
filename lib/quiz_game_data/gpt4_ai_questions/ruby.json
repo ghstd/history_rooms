@@ -1,0 +1,152 @@
+[
+	{
+		"question": "Какой метод используется для получения длины строки в Ruby?",
+		"options": [
+			"length",
+			"size",
+			"count",
+			"lengthOf"
+		],
+		"correct_answer": "length"
+	},
+	{
+		"question": "Какой метод используется для добавления элемента в конец массива в Ruby?",
+		"options": [
+			"push",
+			"append",
+			"add",
+			"insert"
+		],
+		"correct_answer": "push"
+	},
+	{
+		"question": "Какой метод используется для создания нового объекта в Ruby?",
+		"options": [
+			"new",
+			"create",
+			"initialize",
+			"build"
+		],
+		"correct_answer": "new"
+	},
+	{
+		"question": "Какой оператор используется для проверки равенства в Ruby?",
+		"options": [
+			"==",
+			"===",
+			"=",
+			"equal"
+		],
+		"correct_answer": "=="
+	},
+	{
+		"question": "Какой метод используется для преобразования строки в целое число в Ruby?",
+		"options": [
+			"to_i",
+			"to_int",
+			"to_integer",
+			"parse_int"
+		],
+		"correct_answer": "to_i"
+	},
+	{
+		"question": "Какой метод используется для добавления элементов в начало массива в Ruby?",
+		"options": [
+			"unshift",
+			"prepend",
+			"insert",
+			"add_first"
+		],
+		"correct_answer": "unshift"
+	},
+	{
+		"question": "Какой метод используется для удаления последнего элемента массива в Ruby?",
+		"options": [
+			"pop",
+			"remove_last",
+			"delete_last",
+			"pull"
+		],
+		"correct_answer": "pop"
+	},
+	{
+		"question": "Какой метод используется для замены подстроки в строке в Ruby?",
+		"options": [
+			"gsub",
+			"replace",
+			"substitute",
+			"change"
+		],
+		"correct_answer": "gsub"
+	},
+	{
+		"question": "Какой метод используется для получения текущего времени в Ruby?",
+		"options": [
+			"Time.now",
+			"Date.today",
+			"Time.current",
+			"CurrentTime.get"
+		],
+		"correct_answer": "Time.now"
+	},
+	{
+		"question": "Какой метод используется для чтения входных данных от пользователя в Ruby?",
+		"options": [
+			"gets",
+			"input",
+			"read",
+			"capture"
+		],
+		"correct_answer": "gets"
+	},
+	{
+		"question": "Какой метод используется для объединения двух массивов в Ruby?",
+		"options": [
+			"concat",
+			"combine",
+			"merge",
+			"union"
+		],
+		"correct_answer": "concat"
+	},
+	{
+		"question": "Какой метод используется для создания символа из строки в Ruby?",
+		"options": [
+			"to_sym",
+			"to_symbol",
+			"symbolize",
+			"to_s"
+		],
+		"correct_answer": "to_sym"
+	},
+	{
+		"question": "Какой метод используется для выполнения блока кода в каждой итерации в Ruby?",
+		"options": [
+			"each",
+			"forEach",
+			"iterate",
+			"loop"
+		],
+		"correct_answer": "each"
+	},
+	{
+		"question": "Какой метод используется для проверки, пуст ли массив в Ruby?",
+		"options": [
+			"empty?",
+			"nil?",
+			"blank?",
+			"zero?"
+		],
+		"correct_answer": "empty?"
+	},
+	{
+		"question": "Какой метод используется для выполнения блока кода, если условие истинно в Ruby?",
+		"options": [
+			"if",
+			"when",
+			"while",
+			"for"
+		],
+		"correct_answer": "if"
+	}
+]

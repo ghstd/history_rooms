@@ -4,12 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-import ClipboardController from "./clipboard_controller"
 import QuizGameEditController from "./quiz_game/quiz_game_edit_controller"
 import QuizGameShowController from "./quiz_game/quiz_game_show_controller"
 
-application.register("hello", HelloController)
-application.register("clipboard", ClipboardController)
 application.register("quiz_game_edit", QuizGameEditController)
 application.register("quiz_game_show", QuizGameShowController)
