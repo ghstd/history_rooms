@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_180533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ahnenerbe_artifacts_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "art_questions", force: :cascade do |t|
     t.string "question", null: false
@@ -38,10 +46,50 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "danish_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "detailed_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "disciples2_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "global_historical_periods_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "heroes3_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "historical_figures_conquerors_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,7 +102,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "islam_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mythical_locations_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "netherlands_history_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -81,6 +145,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
     t.bigint "note_id", null: false
     t.index ["note_id"], name: "index_notes_users_on_note_id"
     t.index ["user_id"], name: "index_notes_users_on_user_id"
+  end
+
+  create_table "old_testament_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ottoman_empire_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quiz_game_users", force: :cascade do |t|
@@ -120,10 +200,58 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rare_nationalities_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rivers_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roman_empire_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ruby_on_rails_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ruby_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "silk_road_cities_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "somalia_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -144,58 +272,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_141732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "name"
-    t.string "image"
-    t.integer "role", default: 0
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid"], name: "index_users_on_uid", unique: true
-  end
-
-  create_table "what_mean_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "taiwan_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "what_next_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "tom_bombadil_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "when_where_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "turkey_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "who_said_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "note_items", "notes"
-  add_foreign_key "quiz_game_users", "quiz_games"
-  add_foreign_key "quiz_game_users", "users"
-  add_foreign_key "quiz_players", "quiz_games"
-end

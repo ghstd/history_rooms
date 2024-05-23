@@ -8,7 +8,7 @@
 
     <div><%= current_question["question"] %></div>
 
-    <% current_question["options"].each_with_index do |option, index| %>
+    <% current_question["options"].shuffle.each_with_index do |option, index| %>
       <div>
         <%= form.label index, option %>
         <%= form.radio_button :player_answer, option, checked: false, id: "main_form_#{index}", style: "display: none" %>

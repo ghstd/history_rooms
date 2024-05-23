@@ -12,7 +12,7 @@
   <div>
     <% local_assigns["model_names"].each do |source_name| %>
       <%= form.radio_button :questions_source, source_name, checked: local_assigns["config_params"]["questions_source"] == source_name || false %>
-      <%= form.label "questions_source#{source_name}", source_name %>
+      <%= form.label "questions_source#{source_name}", source_name.split('::').last.gsub('Questions', '').gsub(/([a-z])([A-Z])/, '\1 \2') %>
       <br/>
     <% end %>
 

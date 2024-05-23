@@ -1,4 +1,5 @@
 require 'net/http'
+require 'fileutils'
 
 class QuizGamesController < ApplicationController
 
@@ -8,10 +9,6 @@ class QuizGamesController < ApplicationController
     }
 
   REDIS_EXPIRING_TIMER = 120
-
-  MODEL_NAMES = [
-    'Gpt4AiQuestions::MythicalLocationsQuestion'
-  ]
 
   before_action :set_quiz_game, only: [ :show, :edit, :update, :destroy ]
 
@@ -42,10 +39,6 @@ class QuizGamesController < ApplicationController
   end
 
   def show
-    p '====================='
-    p params
-    p '====================='
-
     if params[:player_action] == 'option_сlicked'
       player = @quiz_game.quiz_players.find_by(player_id: current_user.id)
 
@@ -172,13 +165,13 @@ class QuizGamesController < ApplicationController
           url: quiz_game_path(@quiz_game),
           config_params: @config_params,
           client_id: client_id,
-          model_names: MODEL_NAMES
+          model_names: get_models_names
         }.as_json
       )
 
       head :ok
     else
-      render :edit, locals: {config_params: @config_params, model_names: MODEL_NAMES}
+      render :edit, locals: {config_params: @config_params, model_names: get_models_names}
     end
   end
 
@@ -233,6 +226,17 @@ class QuizGamesController < ApplicationController
     def set_player_color(player_id)
       hue = (((player_id - 1) * 137.508) % 360)
       "hsl(#{hue}, 100%, 50%)"
+    end
+
+    def get_models_names
+      model_dir = Rails.root.join('app', 'models', 'gpt4_ai_questions')
+
+      Dir.glob("#{model_dir}/*.rb").map do |file_path|
+        file_name = File.basename(file_path, '.rb')
+        class_name = file_name.split('_').collect(&:capitalize).join
+        namespaced_class_name = "Gpt4AiQuestions::#{class_name}"
+        namespaced_class_name
+      end
     end
 
 end
