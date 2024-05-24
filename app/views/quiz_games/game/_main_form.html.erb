@@ -3,37 +3,34 @@
 							method: :get,
 							html: { class: "quiz_game_main_form" }	do |form| %>
 
-  <div>
+  <div class="quiz_game_show_form_body">
+
     <%= form.text_field :request_type, type: "hidden", value: response_type == "answer" ? "next" : "answer" %>
-
-    <div><%= current_question["question"] %></div>
-
+    <h2><%= current_question["question"] %></h2>
     <% current_question["options"].shuffle.each_with_index do |option, index| %>
-      <div>
+      <div class="quiz_game_show_form_item">
         <%= form.label index, option %>
         <%= form.radio_button :player_answer, option, checked: false, id: "main_form_#{index}", style: "display: none" %>
-
-
         <%= turbo_frame_tag "main_form_option_#{option}" do %><% end %>
-
-
       </div>
     <% end %>
 
   </div>
 
-  <div>
+  <h4 class="quiz_game_show_form_answer">
+    Correct answer: 
+    <span>
+      <% if response_type == "answer" %>
+        <%= current_question[:correct_answer] %>
+      <% end %>
+    </span>
+  </h4>
+
+  <div class="quiz_game_show_form_submit">
     <% if response_type == "answer" %>
       <%= form.submit "Next question" %>
     <% else %>
       <%= form.submit "Send answer" %>
-    <% end %>
-  </div>
-
-  <hr/>
-  <div>
-    <% if response_type == "answer" %>
-      <%= current_question[:correct_answer] %>
     <% end %>
   </div>
 

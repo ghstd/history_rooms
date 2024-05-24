@@ -1,9 +1,20 @@
 <%= form_with scope: :main_form,
 							url: quiz_game_path(quiz_game),
-							method: :get do |form| %>
+							method: :get,
+							html: { class: "quiz_game_show_score" } do |form| %>
 
   <%= form.text_field :request_type, type: "hidden", value: "restart" %>
   <div>
+    <h3>Score:</h3>
+    <% quiz_game.quiz_players.each do |player| %>
+      <div class="quiz_game_show_score_item">
+        <% user = quiz_game.users.find_by(id: player.player_id) %>
+        <span><%= user.name || user.email %></span>
+        <span><%= player.player_answers.count("1") %>/<%= questions_quantity %></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="quiz_game_show_form_submit">
     <%= form.submit "Play again" %>
   </div>
 <% end %>

@@ -1,21 +1,32 @@
 <%= turbo_stream_from "quiz_game_edit_#{@quiz_game.id}" %>
 
-<h1>Editing quiz_game</h1>
 
-<div>
-  <%= link_to "Back to all quiz_games", quiz_games_path %>
-  <%= button_to "Destroy this quiz_game", @quiz_game, method: :delete %>
-</div>
+<div class="quiz_games_edit">
 
-<div data-controller="quiz_game_edit">
-  <%= turbo_frame_tag dom_id(@quiz_game) do %>
-    <%= render "form", { 
+  <h1>Config game</h1>
+
+  <div class="quiz_games_edit_controls">
+    <%= link_to "Back to all quiz_games", quiz_games_path %>
+    <%= button_to "Delete", @quiz_game, method: :delete, class: "quiz_games_edit_controls_delete" %>
+  </div>
+
+  <div class="quiz_games_edit_invite" data-controller="clipboard">
+    <h4>Invite url:</h4>
+    <span class="quiz_games_edit_invite_link" data-clipboard-target="source">
+      <%= "https://#{request.host_with_port}#{quiz_games_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @quiz_game.id)}" %>
+    </span>
+    <button class="quiz_games_edit_invite_copy" data-action="clipboard#copy">Copy link</button>
+  </div>
+
+  <div data-controller="quiz_game_edit" class="quiz_games_edit_body">
+    <%= turbo_frame_tag dom_id(@quiz_game) do %>
+      <%= render "form", { 
 			url: quiz_game_path(@quiz_game), 
 			config_params: config_params, 
 			client_id: 'no_client',
 			model_names: model_names
 			}.as_json %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div>invite url: <%= "https://#{request.host_with_port}#{quiz_games_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @quiz_game.id)}" %></div>
+</div>

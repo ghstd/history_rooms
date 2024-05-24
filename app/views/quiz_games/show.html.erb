@@ -1,49 +1,49 @@
 <%= turbo_stream_from "quiz_game_show_#{@quiz_game.id}" %>
 
+<div class="quiz_games_show">
+
+  <h1>Quiz</h1>
+
+  <div class="quiz_games_show_header">
+    <div class="quiz_games_show_controls">
+      <%= link_to "Back to quiz_games", quiz_games_path %>
+      <%= button_to "Delete", @quiz_game, method: :delete, class: "quiz_games_show_controls_delete" %>
+    </div>
+    <div>
+      <h4>Users:</h4>
+      <% @quiz_game.quiz_players.each do |player| %>
+        <div class="quiz_games_show_users">
+          <% user = @quiz_game.users.find_by(id: player.player_id) %>
+          <span><%= user.name || user.email %></span>
+          <span class="quiz_games_show_user_color" style="background-color: <%= player.player_color %>"></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="quiz_games_show_invite" data-controller="clipboard">
+    <h4>Invite url:</h4>
+    <span class="quiz_games_show_invite_link" data-clipboard-target="source">
+      <%= "https://#{request.host_with_port}#{quiz_games_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @quiz_game.id)}" %>
+    </span>
+    <button class="quiz_games_show_invite_copy" data-action="clipboard#copy">Copy link</button>
+  </div>
 
 
-<div>
-  users: <%= @quiz_game.users.map { |user| user.email }.join(", ") %>
-</div>
 
-<%= render @quiz_game %>
-
-<div data-controller="quiz_game_show">
-  <% if response_type == "end" %>
-    <%= render "quiz_games/game/game_score", quiz_game: @quiz_game %>
-  <% else %>
-    <%= render "quiz_games/game/main_form",
+  <div data-controller="quiz_game_show" class="quiz_games_show_body">
+    <% if response_type == "end" %>
+      <%= render "quiz_games/game/game_score", quiz_game: @quiz_game, questions_quantity: @questions_quantity %>
+    <% else %>
+      <%= render "quiz_games/game/main_form",
 							quiz_game: @quiz_game,
 							current_question: @current_question,
 							response_type: response_type %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div><%= @quiz_game.questions_counter %>/<%= @questions_quantity %></div>
+  <div class="quiz_games_show_counter">
+    <%= @quiz_game.questions_counter %>/<%= @questions_quantity %>
+  </div>
 
-<div>
-  <%= link_to "Back to quiz_games", quiz_games_path %>
-  <%= button_to "Destroy this quiz_game", @quiz_game, method: :delete %>
-</div>
-
-
-<%= turbo_frame_tag "main_form_0" do %>
-  <span>test here</span>
-<% end %>
-
-
-<hr/>
-<div>invite url: <%= "https://#{request.host_with_port}#{quiz_games_path}?invite=#{ApplicationRecord.create_encrypted_url(current_user.id, @quiz_game.id)}" %></div>
-<hr/>
-<div>
-  <%= response_type %>
-</div>
-<div>
-  <%= @quiz_game.quiz_players.find_by(player_id: current_user.id).player_answers.to_s %>
-</div>
-<div>
-  <%= @quiz_game.quiz_players.count %>
-</div>
-<div>
-  <%= @params %>
 </div>

@@ -1,13 +1,17 @@
-<h1>Quiz_games</h1>
+<div class="quiz_games_index">
+  <h1>Quiz_games</h1>
 
-<%= link_to "Home", root_path %>
+  <div class="quiz_games_index_controls">
+    <%= link_to "Home", root_path %>
+    <%= button_to "Create a new quiz_game", quiz_games_path %>
+  </div>
 
-<%= button_to "Create a new quiz_game", quiz_games_path %>
-
-<div id="quiz_games">
-  <% @quiz_games.each do |quiz_game| %>
-    <%= render quiz_game %>
-    <%= link_to "Show this quiz_game", edit_quiz_game_path(quiz_game) %>
-    <hr/>
-  <% end %>
+  <div id="quiz_games" class="quiz_games_index_games">
+    <% @quiz_games.each do |quiz_game| %>
+      <div class="quiz_games_index_game">
+        <h3><%= quiz_game.name %></h3>
+        <%= link_to "Show this quiz_game", edit_quiz_game_path(quiz_game) %>
+      </div>
+    <% end %>
+  </div>
 </div>

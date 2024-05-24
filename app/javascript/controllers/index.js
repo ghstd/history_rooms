@@ -6,6 +6,10 @@ import { application } from "./application"
 
 import QuizGameEditController from "./quiz_game/quiz_game_edit_controller"
 import QuizGameShowController from "./quiz_game/quiz_game_show_controller"
+import ClipboardController from "./clipboard_controller"
 
 application.register("quiz_game_edit", QuizGameEditController)
 application.register("quiz_game_show", QuizGameShowController)
+application.register("clipboard", ClipboardController)
+
+

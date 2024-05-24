@@ -1,0 +1,24 @@
+.quiz_games_index {
+	background-color: var(--color-sub-background);
+	padding: 20px;
+}
+
+.quiz_games_index_controls {
+	display: flex;
+	gap: 20px;
+}
+
+.quiz_games_index_games {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+}
+
+.quiz_games_index_game {
+	padding: 15px;
+	border: 1px solid var(--custom-color-1);
+	border-radius: 5px;
+}

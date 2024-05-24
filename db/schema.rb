@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_180533) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_180533) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "folk_food_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "global_historical_periods_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -111,6 +119,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_180533) do
   end
 
   create_table "mythical_locations_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mythological_creatures_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -296,3 +312,58 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_180533) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.string "image"
+    t.integer "role", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid", unique: true
+  end
+
+  create_table "what_mean_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "what_next_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "when_where_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "who_said_questions", force: :cascade do |t|
+    t.string "question", null: false
+    t.jsonb "options", default: [], null: false, array: true
+    t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "note_items", "notes"
+  add_foreign_key "quiz_game_users", "quiz_games"
+  add_foreign_key "quiz_game_users", "users"
+  add_foreign_key "quiz_players", "quiz_games"
+end

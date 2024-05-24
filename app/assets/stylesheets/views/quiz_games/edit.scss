@@ -1,0 +1,111 @@
+.quiz_games_edit {
+	background-color: var(--color-sub-background);
+	padding: 20px;
+	min-height: 100vh;
+}
+
+.quiz_games_edit_controls {
+	display: flex;
+	gap: 20px;
+}
+
+.quiz_games_edit_controls_delete {
+	background-color: var(--color-link-button-background-danger);
+	font-weight: 600;
+	color: var(--color-light);
+}
+
+.quiz_games_edit_invite {
+	padding: 5px 0;
+}
+
+.quiz_games_edit_invite_link {
+	color: var(--color-light);
+	display: block;
+	width: 30%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.quiz_games_edit_invite_link:active {
+	width: 100%;
+	white-space: wrap;
+}
+
+.quiz_games_edit_invite_copy {
+	padding: 2px 5px;
+}
+
+.quiz_games_edit_body {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+
+.quiz_game_edit_form {
+	display: flex;
+	flex-direction: column;
+}
+
+.quiz_game_edit_form_header {
+	padding: 15px;
+	border-bottom: 1px solid var(--custom-color-1);
+	align-self: center;
+}
+
+.quiz_game_edit_form_header label {
+	color: var(--color-light);
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.quiz_game_edit_form_header input {
+	outline: none;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.quiz_game_edit_form_body {
+	padding: 20px;
+}
+
+.quiz_game_edit_form_item {
+	padding: 5px;
+	display: flex;
+	gap: 15px;
+}
+
+.quiz_game_edit_form_item label {
+	color: var(--color-light);
+	font-size: 18px;
+}
+
+.quiz_game_edit_form_item input {
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.quiz_game_edit_form_submit input {
+	display: inline-block;
+	padding: .4em;
+	margin: .5em 0;
+	background: var(--color-link-button-background-submit);
+	color: var(--color-link-button-text);
+	text-decoration: none;
+	border-radius: .3em;
+	transition: .2s ease-out;
+	border: none;
+	outline: none;
+	font-weight: 600;
+	color: var(--color-light);
+}
+
+.quiz_game_edit_form_submit input:hover {
+	background: var(--color-link-button-background-hover);
+	cursor: pointer;
+}
