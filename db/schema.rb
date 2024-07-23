@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_23_173451) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_23_194428) do
   create_schema "auth"
   create_schema "extensions"
   create_schema "graphql"
@@ -256,6 +256,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_173451) do
     t.string "player_color"
     t.index ["player_id"], name: "index_quiz_players_on_player_id"
     t.index ["quiz_game_id"], name: "index_quiz_players_on_quiz_game_id"
+  end
+
+  create_table "radio_communication_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "radio_systems_questions", force: :cascade do |t|
