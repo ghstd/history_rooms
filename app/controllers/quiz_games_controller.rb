@@ -229,7 +229,7 @@ class QuizGamesController < ApplicationController
     end
 
     def get_models_names
-      model_dir = Rails.root.join('app', 'models', 'study_questions')
+      model_dir = Rails.root.join('app', 'models', 'prepared_questions')
 
       Dir.glob("#{model_dir}/*.rb").map do |file_path|
         file_name = File.basename(file_path, '.rb')
