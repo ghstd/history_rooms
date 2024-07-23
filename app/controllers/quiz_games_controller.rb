@@ -229,12 +229,12 @@ class QuizGamesController < ApplicationController
     end
 
     def get_models_names
-      model_dir = Rails.root.join('app', 'models', 'gpt4_ai_questions')
+      model_dir = Rails.root.join('app', 'models', 'study_questions')
 
       Dir.glob("#{model_dir}/*.rb").map do |file_path|
         file_name = File.basename(file_path, '.rb')
         class_name = file_name.split('_').collect(&:capitalize).join
-        namespaced_class_name = "Gpt4AiQuestions::#{class_name}"
+        namespaced_class_name = "StudyQuestions::#{class_name}"
         namespaced_class_name
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_19_194444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,10 +38,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "code_testing_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "coral_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cyber_secure_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +79,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
   end
 
   create_table "disciples2_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drones_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -208,6 +232,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
     t.index ["quiz_game_id"], name: "index_quiz_players_on_quiz_game_id"
   end
 
+  create_table "radio_systems_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "random_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
@@ -249,6 +281,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_143557) do
   end
 
   create_table "ruby_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "servers_admin_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
