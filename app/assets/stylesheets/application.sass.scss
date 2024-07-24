@@ -27,9 +27,35 @@ body {
 }
 
 .container {
-	width: 1000px;
+	position: relative;
+	max-width: 1000px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
+}
+
+.notice {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 5px;
+	background-color: var(--color-dark);
+	color: var(--color-link-button-background-hover);
+}
+
+.alert {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 5px;
+	background-color: var(--color-dark);
+	color: var(--color-link-button-background-danger);
+}
+
+@media (max-width: 991.98px) {
+	.container {
+		max-width: 800px;
+	}
 }
 
 h1,
