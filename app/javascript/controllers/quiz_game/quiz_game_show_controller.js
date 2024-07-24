@@ -5,7 +5,8 @@ export default class extends Controller {
 		console.log('connect')
 
 		this.state = {
-			optionClicked: false
+			optionClicked: false,
+			answerSended: false
 		}
 
 		const form = this.element.querySelector('.quiz_game_main_form')
@@ -22,6 +23,46 @@ export default class extends Controller {
 	}
 
 
+	async ajaxSubmitHandler() {
+		console.log('ajaxSubmitHandler')
+
+		if (this.state.answerSended) {
+			return
+		}
+
+		this.state.answerSended = true
+
+		const form = this.element.querySelector('.quiz_game_main_form')
+		const formData = new FormData(form)
+		const searchParams = new URLSearchParams(formData)
+		const queryString = searchParams.toString();
+
+		const url = `${form.action}?${queryString}`
+
+		const hiddenInput = this.element.querySelector('.quiz_game_show_form_body > input[type="hidden"]')
+		hiddenInput.value = 'next'
+		const correctAnswer = this.element.querySelector('.quiz_game_show_form_answer > span')
+		correctAnswer.style.display = 'inline-block'
+		const formButton = this.element.querySelector('.quiz_game_show_form_submit > input[type="submit"]')
+		formButton.value = 'Next question'
+
+		try {
+			const response = await fetch(url, {
+				method: 'GET',
+				headers: {
+					'X-Requested-With': 'XMLHttpRequest'
+				}
+			})
+
+			if (!response.ok) {
+				console.error('Ошибка при отправке формы, response.statusText: ', response.statusText)
+			}
+
+		} catch (error) {
+			console.error('Ошибка при отправке формы, error: ', error)
+		}
+	}
+
 
 	beforeStreamRenderHandler(event) {
 		console.log('beforeStreamRenderHandler')
@@ -29,7 +70,11 @@ export default class extends Controller {
 		if (action === 'form_submit') {
 			const form = this.element.querySelector('.quiz_game_main_form')
 			event.preventDefault()
-			form.submit()
+			if (this.state.answerSended) {
+				form.submit()
+			} else {
+				this.ajaxSubmitHandler()
+			}
 			return
 		}
 	}

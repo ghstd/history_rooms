@@ -104,12 +104,15 @@ class QuizGamesController < ApplicationController
         render :show, locals: {response_type: "answer"}
 
       else
+
         guiz_player = QuizPlayer.find_by(player_id: current_user.id)
         player_answer = ((main_form_params[:player_answer] == @current_question.correct_answer) ? 1 : 0)
         guiz_player.player_answers << player_answer
         guiz_player.save!
 
-        render :show, locals: {response_type: "answer"}
+        head :ok
+
+        # render :show, locals: {response_type: "answer"}
       end
 
     else
@@ -120,6 +123,7 @@ class QuizGamesController < ApplicationController
 
       render :show, locals: {response_type: "next"}
     end
+
   end
 
   def create

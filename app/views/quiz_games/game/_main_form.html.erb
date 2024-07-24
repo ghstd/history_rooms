@@ -20,18 +20,12 @@
   <h4 class="quiz_game_show_form_answer">
     Correct answer: 
     <span>
-      <% if response_type == "answer" %>
-        <%= current_question[:correct_answer] %>
-      <% end %>
+      <%= current_question[:correct_answer] %>
     </span>
   </h4>
 
   <div class="quiz_game_show_form_submit">
-    <% if response_type == "answer" %>
-      <%= form.submit "Next question" %>
-    <% else %>
-      <%= form.submit "Send answer" %>
-    <% end %>
+    <%= form.submit "Send answer" %>
   </div>
 
 <% end %>
