@@ -1,0 +1,202 @@
+[
+	{
+		"question": "Какой оператор используется для инкрементации переменной в Ruby?",
+		"options": [
+			"i += 1",
+			"i++",
+			"i = i + 1",
+			"i++1"
+		],
+		"correct_answer": "i += 1"
+	},
+	{
+		"question": "Как в Ruby можно сделать множественное присваивание значений переменным?",
+		"options": [
+			"x, y = 1, 2",
+			"x = 1, y = 2",
+			"x, y <- [1, 2]",
+			"x = (1, 2)"
+		],
+		"correct_answer": "x, y = 1, 2"
+	},
+	{
+		"question": "Как можно разложить массив на переменные в Ruby?",
+		"options": [
+			"a, b, c = array",
+			"a, b, c <- array",
+			"a, b, c = array[]",
+			"a, b, c = array{}"
+		],
+		"correct_answer": "a, b, c = array"
+	},
+	{
+		"question": "Как поменять значения переменных местами в Ruby?",
+		"options": [
+			"x, y = y, x",
+			"swap(x, y)",
+			"x = y; y = x",
+			"swap(x, y, z)"
+		],
+		"correct_answer": "x, y = y, x"
+	},
+	{
+		"question": "Что делает оператор `||=` в Ruby?",
+		"options": [
+			"Присваивает значение переменной, если она равна nil или false",
+			"Всегда присваивает значение переменной",
+			"Удаляет значение переменной",
+			"Проверяет условие и присваивает значение"
+		],
+		"correct_answer": "Присваивает значение переменной, если она равна nil или false"
+	},
+	{
+		"question": "Для чего используется двойное отрицание `!!` в Ruby?",
+		"options": [
+			"Для преобразования значения в логическое (true или false)",
+			"Для инвертирования логического значения",
+			"Для удаления переменной",
+			"Для выполнения кода дважды"
+		],
+		"correct_answer": "Для преобразования значения в логическое (true или false)"
+	},
+	{
+		"question": "Как создать массив строк в Ruby с помощью сокращенной записи?",
+		"options": [
+			"%w(str1 str2 str3)",
+			"['str1', 'str2', 'str3']",
+			"Array.new('str1', 'str2', 'str3')",
+			"['str1', 'str2', 'str3'].to_a"
+		],
+		"correct_answer": "%w(str1 str2 str3)"
+	},
+	{
+		"question": "Как создать блок (объект proc) из символа в Ruby?",
+		"options": [
+			"array.map(&:upcase)",
+			"array.collect(:upcase)",
+			"array.each(&:upcase)",
+			"array.map({|el| el.upcase})"
+		],
+		"correct_answer": "array.map(&:upcase)"
+	},
+	{
+		"question": "Как создать alias для метода класса в Ruby?",
+		"options": [
+			"alias_method :new_name, :old_name",
+			"alias :new_name, :old_name",
+			"alias :new_name :old_name",
+			"alias_method(:new_name, :old_name)"
+		],
+		"correct_answer": "alias_method :new_name, :old_name"
+	},
+	{
+		"question": "Как передать произвольное количество аргументов в метод?",
+		"options": [
+			"def method(arg1, *args)",
+			"def method(arg1, ...args)",
+			"def method(arg1, args[])",
+			"def method(arg1, args{})"
+		],
+		"correct_answer": "def method(arg1, *args)"
+	},
+	{
+		"question": "Как передать хэш опций в метод?",
+		"options": [
+			"def method(arg1, options = {})",
+			"def method(arg1, options: {})",
+			"def method(arg1, *options)",
+			"def method(arg1, options[])"
+		],
+		"correct_answer": "def method(arg1, options = {})"
+	},
+	{
+		"question": "Что означает, что классы в Ruby являются открытыми?",
+		"options": [
+			"Их можно изменять и дополнять в любое время",
+			"Их нельзя изменять после создания",
+			"Они автоматически закрываются после использования",
+			"Их методы нельзя переопределять"
+		],
+		"correct_answer": "Их можно изменять и дополнять в любое время"
+	},
+	{
+		"question": "Как добавить метод только к одному конкретному объекту (singleton method)?",
+		"options": [
+			"class << obj; def method; end; end",
+			"class obj; def method; end; end",
+			"class Singleton; def method; end; end",
+			"class obj.singleton; def method; end; end"
+		],
+		"correct_answer": "class << obj; def method; end; end"
+	},
+	{
+		"question": "Как в Ruby можно разделять числа подчеркиванием?",
+		"options": [
+			"1_000_000",
+			"1-000-000",
+			"1,000,000",
+			"1.000.000"
+		],
+		"correct_answer": "1_000_000"
+	},
+	{
+		"question": "Что делает метод `eval` в Ruby?",
+		"options": [
+			"Выполняет строку кода, переданную в качестве аргумента",
+			"Создает новый объект",
+			"Удаляет переменную",
+			"Преобразует строку в число"
+		],
+		"correct_answer": "Выполняет строку кода, переданную в качестве аргумента"
+	},
+	{
+		"question": "Что делает метод `instance_eval` в Ruby?",
+		"options": [
+			"Дает доступ к приватным методам и переменным объекта",
+			"Создает новый объект",
+			"Удаляет переменную",
+			"Преобразует строку в число"
+		],
+		"correct_answer": "Дает доступ к приватным методам и переменным объекта"
+	},
+	{
+		"question": "Какие методы позволяют получать и устанавливать значения переменных класса?",
+		"options": [
+			"class_variable_get и class_variable_set",
+			"class_get и class_set",
+			"variable_get и variable_set",
+			"attr_get и attr_set"
+		],
+		"correct_answer": "class_variable_get и class_variable_set"
+	},
+	{
+		"question": "Какой метод используется для динамического создания методов?",
+		"options": [
+			"define_method",
+			"create_method",
+			"new_method",
+			"method_missing"
+		],
+		"correct_answer": "define_method"
+	},
+	{
+		"question": "Как вызвать метод по имени в Ruby, даже если он приватный?",
+		"options": [
+			"send",
+			"call",
+			"invoke",
+			"execute"
+		],
+		"correct_answer": "send"
+	},
+	{
+		"question": "Какой метод вызывается, если запрашиваемый метод не существует?",
+		"options": [
+			"method_missing",
+			"method_not_found",
+			"no_method",
+			"undefined_method"
+		],
+		"correct_answer": "method_missing"
+	}
+]

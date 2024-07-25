@@ -1,0 +1,152 @@
+[
+	{
+		"question": "Какой метод используется для обработки исключений в Ruby?",
+		"options": [
+			"begin-rescue-end",
+			"try-catch",
+			"if-else",
+			"catch-throw"
+		],
+		"correct_answer": "begin-rescue-end"
+	},
+	{
+		"question": "Как можно обрабатывать несколько разных типов ошибок в блоке `begin-rescue`?",
+		"options": [
+			"Используя несколько операторов `rescue`",
+			"Используя оператор `case`",
+			"Используя оператор `if-else`",
+			"Используя оператор `retry`"
+		],
+		"correct_answer": "Используя несколько операторов `rescue`"
+	},
+	{
+		"question": "Как повторно выбросить пойманную ошибку после логирования в блоке `rescue`?",
+		"options": [
+			"raise",
+			"retry",
+			"throw",
+			"catch"
+		],
+		"correct_answer": "raise"
+	},
+	{
+		"question": "Как записать исключение с сообщением в Ruby?",
+		"options": [
+			"raise 'message'",
+			"throw 'message'",
+			"catch 'message'",
+			"retry 'message'"
+		],
+		"correct_answer": "raise 'message'"
+	},
+	{
+		"question": "Как обернуть метод в блок `begin-rescue` для обработки исключений?",
+		"options": [
+			"def method\n  begin\n    # код\n  rescue\n    # обработка ошибки\n  end\nend",
+			"def method\n  try\n    # код\n  catch\n    # обработка ошибки\n  end\nend",
+			"def method\n  rescue\n    # обработка ошибки\n  end\nend",
+			"def method\n  if error\n    # обработка ошибки\n  end\nend"
+		],
+		"correct_answer": "def method\n  begin\n    # код\n  rescue\n    # обработка ошибки\n  end\nend"
+	},
+	{
+		"question": "Что делает ключевое слово `retry` в блоке `rescue`?",
+		"options": [
+			"Повторяет выполнение блока `begin`",
+			"Завершает выполнение программы",
+			"Выбрасывает новую ошибку",
+			"Игнорирует ошибку"
+		],
+		"correct_answer": "Повторяет выполнение блока `begin`"
+	},
+	{
+		"question": "Что делает блок `ensure` в Ruby?",
+		"options": [
+			"Выполняется всегда, независимо от того, была ли ошибка или нет",
+			"Выполняется только при ошибке",
+			"Выполняется только при отсутствии ошибок",
+			"Выполняется перед блоком `rescue`"
+		],
+		"correct_answer": "Выполняется всегда, независимо от того, была ли ошибка или нет"
+	},
+	{
+		"question": "Как можно создать анонимный метод в Ruby?",
+		"options": [
+			"Используя `proc`",
+			"Используя `lambda`",
+			"Используя `yield`",
+			"Используя `block`"
+		],
+		"correct_answer": "Используя `proc`"
+	},
+	{
+		"question": "Что выведет метод `self` в глобальном контексте?",
+		"options": [
+			"main",
+			"self",
+			"nil",
+			"global"
+		],
+		"correct_answer": "main"
+	},
+	{
+		"question": "Как передать блок в метод в качестве аргумента и вызвать его внутри метода?",
+		"options": [
+			"Используя `&` для именования блока",
+			"Используя `proc` для блока",
+			"Используя `lambda` для блока",
+			"Используя `yield`"
+		],
+		"correct_answer": "Используя `&` для именования блока"
+	},
+	{
+		"question": "Как проверить наличие блока в методе?",
+		"options": [
+			"block_given?",
+			"block_exists?",
+			"block?",
+			"block_available?"
+		],
+		"correct_answer": "block_given?"
+	},
+	{
+		"question": "Что происходит при вызове блока с помощью `yield` в методе?",
+		"options": [
+			"Выполняется переданный блок кода",
+			"Выбрасывается исключение",
+			"Метод завершает выполнение",
+			"Метод возвращает значение блока"
+		],
+		"correct_answer": "Выполняется переданный блок кода"
+	},
+	{
+		"question": "Как создать замыкание в Ruby?",
+		"options": [
+			"Используя `proc` или `lambda`",
+			"Используя `begin` и `end`",
+			"Используя `if` и `else`",
+			"Используя `catch` и `throw`"
+		],
+		"correct_answer": "Используя `proc` или `lambda`"
+	},
+	{
+		"question": "Как передать блок как объект в методе?",
+		"options": [
+			"Используя `&block`",
+			"Используя `yield`",
+			"Используя `proc`",
+			"Используя `block_given?`"
+		],
+		"correct_answer": "Используя `&block`"
+	},
+	{
+		"question": "Какой метод используется для вызова блока, переданного как аргумент метода?",
+		"options": [
+			"block.call",
+			"block.execute",
+			"block.run",
+			"block.perform"
+		],
+		"correct_answer": "block.call"
+	}
+]

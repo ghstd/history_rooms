@@ -68,11 +68,17 @@ export default class extends Controller {
 		console.log('beforeStreamRenderHandler')
 		const action = event.target.getAttribute('action')
 		if (action === 'form_submit') {
-			const form = this.element.querySelector('.quiz_game_main_form')
 			event.preventDefault()
+			const form = this.element.querySelector('.quiz_game_main_form')
+			const formButton = this.element.querySelector('.quiz_game_show_form_submit > input[type="submit"]')
 			if (this.state.answerSended) {
+				formButton.disabled = true
 				form.submit()
 			} else {
+				formButton.disabled = true
+				setTimeout(() => {
+					formButton.disabled = false
+				}, 2000)
 				this.ajaxSubmitHandler()
 			}
 			return
