@@ -9,12 +9,11 @@
     <% quiz_game.quiz_players.each do |player| %>
       <div class="quiz_game_show_score_item">
         <% user = quiz_game.users.find_by(id: player.player_id) %>
-        <span><%= user.name || user.email %></span>
+        <span><%= user ? (user.name || user.email) : 'anonymous' %></span>
         <span><%= player.player_answers.count("1") %>/<%= questions_quantity %></span>
       </div>
     <% end %>
   </div>
   <div class="quiz_game_show_form_submit">
-    <%# <%= form.submit "Play again" %> %>
   </div>
 <% end %>

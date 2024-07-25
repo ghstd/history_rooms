@@ -14,7 +14,7 @@
       <% @quiz_game.quiz_players.each do |player| %>
         <div class="quiz_games_show_users">
           <% user = @quiz_game.users.find_by(id: player.player_id) %>
-          <span><%= user.name || user.email %></span>
+          <span><%= user ? (user.name || user.email) : 'anonymous' %></span>
           <span class="quiz_games_show_user_color" style="background-color: <%= player.player_color %>"></span>
         </div>
       <% end %>

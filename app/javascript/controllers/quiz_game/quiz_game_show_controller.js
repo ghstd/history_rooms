@@ -73,12 +73,15 @@ export default class extends Controller {
 			const formButton = this.element.querySelector('.quiz_game_show_form_submit > input[type="submit"]')
 			if (this.state.answerSended) {
 				formButton.disabled = true
+				formButton.style.opacity = '0.5'
 				form.submit()
 			} else {
 				formButton.disabled = true
+				formButton.style.opacity = '0.5'
 				setTimeout(() => {
 					formButton.disabled = false
-				}, 2000)
+					formButton.style.opacity = '1.0'
+				}, 1000)
 				this.ajaxSubmitHandler()
 			}
 			return

@@ -77,19 +77,12 @@ class QuizGamesController < ApplicationController
           return
         end
 
-        if @quiz_game.quiz_players.count > 1
-          redis = Redis.new
-          requests_counter = redis.incr('requests_counter')
-          if requests_counter >= @quiz_game.quiz_players.count
-            redis.set('requests_counter', 0)
-            render :show, locals: {response_type: "next"}
-            return
-          end
+        client_questions_counter = main_form_params[:questions_counter]
+        if questions_counter != client_questions_counter
+          @quiz_game.update!(questions_counter: client_questions_counter)
         end
 
-        @quiz_game.update!(questions_counter: questions_counter + 1)
         @current_question = questions_model.find_by(id: @quiz_game.questions_counter)
-
         render :show, locals: {response_type: "next"}
 
       elsif main_form_params[:request_type] == "restart"
@@ -112,7 +105,6 @@ class QuizGamesController < ApplicationController
 
         head :ok
 
-        # render :show, locals: {response_type: "answer"}
       end
 
     else
@@ -203,6 +195,11 @@ class QuizGamesController < ApplicationController
   end
 
   def destroy
+    # ================================
+    redis = Redis.new
+    redis.del("requests_counter_#{@quiz_game.id}")
+    # ================================
+
     current_user.quiz_games.destroy(@quiz_game)
 
     if @quiz_game.users.count == 0

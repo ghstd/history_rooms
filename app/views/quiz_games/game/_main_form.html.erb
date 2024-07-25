@@ -6,12 +6,13 @@
   <div class="quiz_game_show_form_body">
 
     <%= form.text_field :request_type, type: "hidden", value: response_type == "answer" ? "next" : "answer" %>
+    <%= form.text_field :questions_counter, type: "hidden", value: quiz_game.questions_counter + 1 %>
     <h2><%= current_question["question"] %></h2>
     <% current_question["options"].shuffle.each_with_index do |option, index| %>
       <div class="quiz_game_show_form_item">
         <%= form.label index, option %>
         <%= form.radio_button :player_answer, option, checked: false, id: "main_form_#{index}", style: "display: none" %>
-        <%= turbo_frame_tag "main_form_option_#{option}" do %><% end %>
+        <%= turbo_frame_tag "main_form_option_#{option}", class: "quiz_game_show_player_answer" do %><% end %>
       </div>
     <% end %>
 
