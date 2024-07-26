@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_26_105059) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
   create_schema "auth"
   create_schema "extensions"
   create_schema "graphql"
@@ -120,6 +120,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_105059) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ends_of_the_world_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "english_tenses_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "folk_food_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -177,6 +193,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_105059) do
   end
 
   create_table "lord_of_the_rings_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "magic_artifacts_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "magic_books_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -442,6 +474,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_105059) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tactical_medicine_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taiwan_history_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -517,6 +557,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_105059) do
   end
 
   create_table "world_conflicts_resolution_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "world_sects_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
