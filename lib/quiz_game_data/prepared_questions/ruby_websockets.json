@@ -1,0 +1,122 @@
+[
+	{
+		"question": "Что такое сокеты в программировании и для чего они используются?",
+		"options": [
+			"Интерфейсы для обмена данными между процессами",
+			"Инструменты для обработки изображений",
+			"Механизмы управления памятью",
+			"Модули для работы с базами данных"
+		],
+		"correct_answer": "Интерфейсы для обмена данными между процессами"
+	},
+	{
+		"question": "Какой Ruby-класс используется для создания TCP-сокета?",
+		"options": [
+			"TCPSocket",
+			"TCPSocketServer",
+			"SocketClient",
+			"TCPSocketConnection"
+		],
+		"correct_answer": "TCPSocket"
+	},
+	{
+		"question": "Какой Ruby-класс применяется для создания серверного сокета, который может принимать подключения?",
+		"options": [
+			"TCPServer",
+			"SocketServer",
+			"ServerSocket",
+			"TCPConnection"
+		],
+		"correct_answer": "TCPServer"
+	},
+	{
+		"question": "Что такое вебсокеты и как они отличаются от обычных HTTP-соединений?",
+		"options": [
+			"Вебсокеты обеспечивают двустороннюю связь, в отличие от HTTP",
+			"Вебсокеты используют UDP протокол вместо TCP",
+			"Вебсокеты позволяют передавать только текстовые данные",
+			"Вебсокеты не могут поддерживать постоянное соединение"
+		],
+		"correct_answer": "Вебсокеты обеспечивают двустороннюю связь, в отличие от HTTP"
+	},
+	{
+		"question": "Какой Ruby-gem можно использовать для работы с вебсокетами на сервере?",
+		"options": [
+			"faye-websocket",
+			"net-http",
+			"socket-server",
+			"ruby-websocket"
+		],
+		"correct_answer": "faye-websocket"
+	},
+	{
+		"question": "В каком порядке происходит процесс установки TCP-соединения?",
+		"options": [
+			"SYN, SYN-ACK, ACK",
+			"ACK, SYN, SYN-ACK",
+			"SYN, ACK, FIN",
+			"ACK, SYN-ACK, SYN"
+		],
+		"correct_answer": "SYN, SYN-ACK, ACK"
+	},
+	{
+		"question": "Какой метод класса TCPSocket используется для отправки данных через сокет?",
+		"options": [
+			"write",
+			"send",
+			"transmit",
+			"transfer"
+		],
+		"correct_answer": "write"
+	},
+	{
+		"question": "Какой Ruby-класс используется для работы с вебсокетами на клиентской стороне?",
+		"options": [
+			"WebSocket::Client::Simple",
+			"WebSocketClient",
+			"TCPSocketClient",
+			"WebSocketServer"
+		],
+		"correct_answer": "WebSocket::Client::Simple"
+	},
+	{
+		"question": "Каким образом в Ruby можно создать WebSocket сервер, который будет слушать на определенном порту?",
+		"options": [
+			"Использовать TCPServer и faye-websocket",
+			"Использовать SocketServer и websocket-client",
+			"Использовать TCPSocket и ruby-websocket",
+			"Использовать Socket и net-http"
+		],
+		"correct_answer": "Использовать TCPServer и faye-websocket"
+	},
+	{
+		"question": "Какой метод класса WebSocket::Client::Simple используется для отправки сообщения на сервер?",
+		"options": [
+			"send",
+			"transmit",
+			"write",
+			"post"
+		],
+		"correct_answer": "send"
+	},
+	{
+		"question": "Как WebSocket поддерживает постоянное соединение между клиентом и сервером?",
+		"options": [
+			"Посредством поддержания открытого TCP-соединения",
+			"Через многократные HTTP-запросы",
+			"Через временные UDP-соединения",
+			"Через синхронные FTP-сессии"
+		],
+		"correct_answer": "Посредством поддержания открытого TCP-соединения"
+	},
+	{
+		"question": "Как можно закрыть сокет в Ruby после завершения передачи данных?",
+		"options": [
+			"Вызвать метод close на сокете",
+			"Использовать метод terminate",
+			"Закрыть сокет с помощью метода shutdown",
+			"Закрыть сокет с использованием метода end"
+		],
+		"correct_answer": "Вызвать метод close на сокете"
+	}
+]

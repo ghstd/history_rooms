@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
   create_schema "auth"
   create_schema "extensions"
   create_schema "graphql"
@@ -48,6 +48,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "astronomy_space_objects_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "avionics_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -60,6 +68,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cocktails_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -120,6 +136,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "elf_types_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ends_of_the_world_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -168,6 +192,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "historical_weapons_characteristics_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "is_true_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
@@ -185,6 +217,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
   end
 
   create_table "japanese_swords_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jeanne_latudas_life_stories_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -256,6 +296,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "napoleon_bonapartes_life_stories_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "netherlands_history_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -302,6 +350,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
   end
 
   create_table "peoples_of_the_world_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "potential_space_technologies_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
@@ -434,6 +490,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ruby_websockets_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "servers_admin_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -458,10 +522,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "spy_intelligence_technology_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "standard_questions", force: :cascade do |t|
     t.string "question", null: false
     t.jsonb "options", default: [], null: false, array: true
     t.jsonb "answer", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "story_of_captain_william_kidd_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -483,6 +563,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_150054) do
   end
 
   create_table "taiwan_history_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tale_of_the_templars_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "the_most_durable_flexible_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
     t.string "correct_answer"
