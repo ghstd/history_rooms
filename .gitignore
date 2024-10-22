@@ -40,3 +40,5 @@
 /node_modules
 
 /my_local_files
+/lib/quiz_game_data/*
+/lib/quiz_game_data/

@@ -74,9 +74,22 @@
 }
 
 .quiz_game_edit_form_item {
+	position: relative;
 	padding: 5px;
 	display: flex;
 	gap: 15px;
+
+	span {
+		position: absolute;
+		top: 0;
+		right: -10%;
+		font-size: 0.8rem;
+		color: orange
+	}
+
+	@media (max-width: 480px) {
+		padding: 1rem;
+	}
 }
 
 .quiz_game_edit_form_item label {

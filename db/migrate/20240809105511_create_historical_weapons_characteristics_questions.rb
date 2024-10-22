@@ -2,7 +2,7 @@ class CreateHistoricalWeaponsCharacteristicsQuestions < ActiveRecord::Migration[
   def change
     create_table :historical_weapons_characteristics_questions do |t|
       t.string :question
-      t.text :options, array: true, default: []
+      t.text :options
       t.string :correct_answer
 
       t.timestamps

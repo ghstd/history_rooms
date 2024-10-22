@@ -74,7 +74,7 @@ namespace :json_to_model do
         migration_content = File.read(migration_file_name)
         updated_content = migration_content.gsub(
           /t\.text :options/,
-          't.text :options, array: true, default: []'
+          't.text :options'
         )
         File.write(migration_file_name, updated_content)
       end

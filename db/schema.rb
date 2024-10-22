@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
   create_schema "auth"
   create_schema "extensions"
   create_schema "graphql"
@@ -40,10 +40,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "art_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "art_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,10 +64,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cities_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "cities_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,10 +88,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coral_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "cohere_coral_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cohere_standart_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -112,10 +120,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "detailed_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "detailed_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -200,10 +208,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "is_true_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "is_true_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -418,10 +426,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "random_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "random_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -434,10 +442,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rivers_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "rivers_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -530,14 +538,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "standard_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "story_of_captain_william_kidd_questions", force: :cascade do |t|
     t.string "question"
     t.text "options", default: [], array: true
@@ -546,10 +546,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "survival_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "survival_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -620,34 +620,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_105532) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
-  create_table "what_mean_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "what_mean_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "what_next_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "what_next_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "when_where_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "when_where_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "who_said_questions", force: :cascade do |t|
-    t.string "question", null: false
-    t.jsonb "options", default: [], null: false, array: true
-    t.jsonb "answer", default: [], null: false, array: true
+  create_table "who_said_questions_questions", force: :cascade do |t|
+    t.string "question"
+    t.text "options", default: [], array: true
+    t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

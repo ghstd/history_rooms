@@ -81,7 +81,7 @@ export default class extends Controller {
 				setTimeout(() => {
 					formButton.disabled = false
 					formButton.style.opacity = '1.0'
-				}, 1000)
+				}, 200)
 				this.ajaxSubmitHandler()
 			}
 			return

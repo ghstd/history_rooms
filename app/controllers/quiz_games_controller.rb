@@ -230,14 +230,18 @@ class QuizGamesController < ApplicationController
     end
 
     def get_models_names
-      model_dir = Rails.root.join('app', 'models', 'prepared_questions')
+      models_names = []
 
-      Dir.glob("#{model_dir}/*.rb").map do |file_path|
-        file_name = File.basename(file_path, '.rb')
-        class_name = file_name.split('_').collect(&:capitalize).join
-        namespaced_class_name = "PreparedQuestions::#{class_name}"
-        namespaced_class_name
+      Dir.glob('app/models/*/*').each do |file_path|
+        next if !file_path.include?('.rb')
+
+        relative_path = file_path.sub('app/models/', '').sub('.rb', '')
+        class_name  = relative_path.split('/').map(&:camelize).join('::')
+
+        models_names << class_name
       end
+
+      models_names.reverse!
     end
 
 end
