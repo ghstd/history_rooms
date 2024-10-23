@@ -1,5 +1,5 @@
 module Gpt4AiQuestions
   class HistoricalFiguresConquerorsQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

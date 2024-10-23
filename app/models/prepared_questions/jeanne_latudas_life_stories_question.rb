@@ -1,5 +1,5 @@
 module PreparedQuestions
   class JeanneLatudasLifeStoriesQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

@@ -1,5 +1,5 @@
 module Gpt4AiQuestions
   class NetherlandsHistoryQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

@@ -1,5 +1,5 @@
 module StudyQuestions
   class RadioSystemsQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

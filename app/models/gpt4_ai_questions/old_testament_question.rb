@@ -1,5 +1,5 @@
 module Gpt4AiQuestions
   class OldTestamentQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

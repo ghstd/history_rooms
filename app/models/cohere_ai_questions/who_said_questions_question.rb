@@ -1,5 +1,5 @@
 module CohereAiQuestions
   class WhoSaidQuestionsQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

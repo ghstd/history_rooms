@@ -1,5 +1,5 @@
 module Gpt4AiQuestions
   class FolkFoodQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

@@ -1,5 +1,5 @@
 module CohereAiQuestions
   class ArtQuestionsQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

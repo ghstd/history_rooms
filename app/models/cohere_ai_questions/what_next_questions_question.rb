@@ -1,5 +1,5 @@
 module CohereAiQuestions
   class WhatNextQuestionsQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end

@@ -11,30 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
-  create_schema "auth"
-  create_schema "extensions"
-  create_schema "graphql"
-  create_schema "graphql_public"
-  create_schema "pgbouncer"
-  create_schema "pgsodium"
-  create_schema "pgsodium_masks"
-  create_schema "realtime"
-  create_schema "storage"
-  create_schema "vault"
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_graphql"
-  enable_extension "pg_stat_statements"
-  enable_extension "pgcrypto"
-  enable_extension "pgjwt"
-  enable_extension "pgsodium"
-  enable_extension "plpgsql"
-  enable_extension "supabase_vault"
-  enable_extension "uuid-ossp"
-
   create_table "ahnenerbe_artifacts_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "art_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "astronomy_space_objects_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "avionics_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "cities_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "cocktails_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,7 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "code_testing_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,7 +69,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "cohere_coral_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,7 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "cohere_standart_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,7 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "cyber_secure_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,7 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "danish_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,7 +101,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "detailed_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -130,7 +109,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "disciples2_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -138,7 +117,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "drones_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -146,7 +125,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "elf_types_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -154,7 +133,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ends_of_the_world_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -162,7 +141,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "english_tenses_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -170,7 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "folk_food_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -178,7 +157,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "global_historical_periods_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -186,7 +165,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "heroes3_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -194,7 +173,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "historical_figures_conquerors_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -202,7 +181,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "historical_weapons_characteristics_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -210,7 +189,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "is_true_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -218,7 +197,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "islam_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -226,7 +205,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "japanese_swords_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -234,7 +213,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "jeanne_latudas_life_stories_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -242,7 +221,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "lord_of_the_rings_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -250,7 +229,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "magic_artifacts_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -258,7 +237,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "magic_books_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -266,7 +245,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "martial_arts_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -274,7 +253,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "morrowind_oblivion_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -282,7 +261,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "movies_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -290,7 +269,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "mythical_locations_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -298,7 +277,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "mythological_creatures_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -306,7 +285,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "napoleon_bonapartes_life_stories_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -314,7 +293,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "netherlands_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -322,7 +301,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "note_items", force: :cascade do |t|
     t.text "body"
-    t.bigint "note_id"
+    t.integer "note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["note_id"], name: "index_note_items_on_note_id"
@@ -335,15 +314,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
   end
 
   create_table "notes_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "note_id", null: false
+    t.integer "user_id", null: false
+    t.integer "note_id", null: false
     t.index ["note_id"], name: "index_notes_users_on_note_id"
     t.index ["user_id"], name: "index_notes_users_on_user_id"
   end
 
   create_table "old_testament_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -351,7 +330,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ottoman_empire_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -359,7 +338,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "peoples_of_the_world_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -367,7 +346,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "potential_space_technologies_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -375,15 +354,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "programming_languages_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "quiz_game_users", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "quiz_game_id", null: false
+    t.integer "user_id", null: false
+    t.integer "quiz_game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_game_id"], name: "index_quiz_game_users_on_quiz_game_id"
@@ -401,10 +380,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "quiz_players", force: :cascade do |t|
     t.integer "player_id"
-    t.text "player_answers", default: [], array: true
+    t.text "player_answers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "quiz_game_id"
+    t.integer "quiz_game_id"
     t.string "player_color"
     t.index ["player_id"], name: "index_quiz_players_on_player_id"
     t.index ["quiz_game_id"], name: "index_quiz_players_on_quiz_game_id"
@@ -412,7 +391,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "radio_communication_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -420,7 +399,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "radio_systems_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -428,7 +407,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "random_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -436,7 +415,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "rare_nationalities_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -444,7 +423,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "rivers_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -452,7 +431,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "roman_empire_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -460,7 +439,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_classes_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -468,7 +447,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_exeptions_blocks_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -476,7 +455,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_meta_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -484,7 +463,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_on_rails_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -492,7 +471,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -500,7 +479,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "ruby_websockets_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -508,7 +487,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "servers_admin_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -516,7 +495,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "silk_road_cities_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -524,7 +503,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "somalia_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -532,7 +511,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "spy_intelligence_technology_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -540,7 +519,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "story_of_captain_william_kidd_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -548,7 +527,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "survival_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -556,7 +535,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "tactical_medicine_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -564,7 +543,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "taiwan_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -572,7 +551,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "tale_of_the_templars_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -580,7 +559,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "the_most_durable_flexible_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -588,7 +567,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "tom_bombadil_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -596,7 +575,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "turkey_history_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -622,7 +601,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "what_mean_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -630,7 +609,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "what_next_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -638,7 +617,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "when_where_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -646,7 +625,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "who_said_questions_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -654,7 +633,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "world_conflicts_resolution_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -662,7 +641,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_22_184339) do
 
   create_table "world_sects_questions", force: :cascade do |t|
     t.string "question"
-    t.text "options", default: [], array: true
+    t.text "options"
     t.string "correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

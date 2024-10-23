@@ -1,5 +1,5 @@
 module PreparedQuestions
   class MoviesQuestion < ApplicationRecord
-  serialize :options, JSON
+    serialize :options, coder: JSON
   end
 end
